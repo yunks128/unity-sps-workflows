@@ -1,0 +1,4 @@
+script_name: 
+  class: File
+  path: L1a_pge.sh
+base_filename: ssips_L1a

@@ -1,0 +1,6 @@
+filename: 
+  class: File
+  path: ssips_L1a_5.dat
+script_name:
+  class: File
+  path: L1b_pge.sh
