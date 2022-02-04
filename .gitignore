@@ -127,3 +127,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# YAML files with sensitive information
+*.yml1
+*.yml2

@@ -1,0 +1,9 @@
+workflow_source_s3_folder: s3://sds-test-bucket/L1a-input/dumby-product-20210622191038567000
+workflow_source_s3_filename: LC80101172015002LGN00_BQA.TIF
+workflow_product_id: dumby-product-20210622191038567000
+workflow_min_sleep: 1
+workflow_max_sleep: 5
+workflow_target_s3_folder: s3://sds-test-bucket/L1a-output
+workflow_aws_access_key_id: .........
+workflow_aws_secret_access_key: ...............
+workflow_aws_session_token: ................
