@@ -8,10 +8,21 @@ At this time, fake PGEs and input data are used.
 
 ## Steps
 
-- Clone this repository end enter this directory:
+- Clone this repository and enter this directory:
 ```
 git clone https://github.com/unity-sds/unity-sps-workflows.git
 cd unity-sps-workflows/ 
 git checkout devel
 cd sounder_sips 
 ```
+
+- Renew the AWS credentials for which you have Read/Write permissions to the desired S3 bucket. For example:
+```
+aws-login -gov
+...
+Please choose the role you would like to assume:
+[0] my_role---->....
+...
+Credential file /Users/...../.aws/config has been successfully updated. To use you must specify the profile 'saml-gov'.
+```
+
