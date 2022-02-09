@@ -4,7 +4,14 @@ At this time, fake PGEs and input data are used.
 
 ## Pre-requisites
 - Read/Write permissions to an S3 bucket pre-populated with the L1a input file
-- A python virtual environment with the latest version of the CWL libraries installed
+- A python virtual environment with the latest version of the CWL libraries installed. For example, such an environment can be created as follows:
+```
+cd <any working directory>
+virtualenv cwl_venv
+source cwl_venv/bin/activate
+pip install cwltool cwl-runner
+```
+
 
 ## Steps
 
@@ -40,3 +47,5 @@ o Execute the workflow:
 ```
 cwl-runner --no-match-user --no-read-only ssips_L1a_L1b_workflow.cwl ssips_L1a_L1b_workflow_job.yml
 ```
+
+o Afetr the workflow completes, verify that fake L1a and L1b files have been created in the target S3 bucket and folders
