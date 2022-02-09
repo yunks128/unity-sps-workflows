@@ -27,6 +27,16 @@ Credential file /Users/...../.aws/config has been successfully updated. To use y
 ```
 
 - Edit the file _ssips_L1a_L1b_workflow_job.yml_ which contains the specific user parameters used by the workflow:
-  - Adjust the value of _l1a_workflow_source_s3_folder_ to match your S3 input bucket (where the test file is stored)
-  - Adjust the value of _l1a_workflow_target_s3_folder_ and _l1b_workflow_target_s3_folder_ to the desired S3 locations where the output files will be written 
-  - cut-and-paste the value of the AWS keys (_workflow_aws_access_key_id_, _workflow_aws_secret_access_key_, _workflow_aws_session_token) from the values for the _saml-gov_ profile included in the AWS credential file _~/.aws/credentials
+  - Adjust the value of _l1a_workflow_source_s3_folder_ to match your S3 input bucket (where the input test file is stored)
+  - Adjust the value of _l1a_workflow_target_s3_folder_ and _l1b_workflow_target_s3_folder_ to the desired S3 locations where the output files will be written  (the target S3 folder must exist, but the target S3 folders within it don't have to)
+  - cut-and-paste the value of the AWS keys (_workflow_aws_access_key_id_, _workflow_aws_secret_access_key_, _workflow_aws_session_token_) from the values for the selected profile included in the AWS credential file _~/.aws/credentials
+
+o Activate the Python virtual environment:
+```
+source <path to venv location>/env/bin/activate
+```
+
+o Execute the workflow:
+```
+cwl-runner --no-match-user --no-read-only ssips_L1a_L1b_workflow.cwl ssips_L1a_L1b_workflow_job.yml
+```
