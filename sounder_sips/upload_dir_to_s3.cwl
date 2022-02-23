@@ -24,7 +24,7 @@ requirements:
         entry: |
           [default]
           output = json
-          region = us-gov-west-1
+          region = $(inputs.aws_region)
           aws_access_key_id = $(inputs.aws_access_key_id)
           aws_secret_access_key = $(inputs.aws_secret_access_key)
           aws_session_token = $(inputs.aws_session_token)
@@ -40,6 +40,7 @@ arguments: [
 ]
 
 inputs:
+  aws_region: string
   aws_access_key_id: string
   aws_secret_access_key: string
   aws_session_token: string
