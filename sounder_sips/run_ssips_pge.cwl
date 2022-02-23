@@ -21,10 +21,15 @@ requirements:
           mkdir -p $output_dir
           cp $input_dir/*.PDS $output_dir/.
           ls -l $output_dir
+          echo "Environmemnt: SIPS_STATIC_DIR=$SIPS_STATIC_DIR"
 
 hints:
   DockerRequirement:
     dockerPull: alpine:latest
+  EnvVarRequirement:
+      envDef:
+        SIPS_STATIC_DIR: $(inputs.static_dir.path)
+
 baseCommand: ["sh", "my_script.sh"]
 arguments: [
   "--input_dir",
