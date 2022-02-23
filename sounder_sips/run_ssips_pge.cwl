@@ -15,13 +15,13 @@ requirements:
           echo "Static Directory:"
           ls -l $2
           echo "Input Directory:"
-          mkdir ./in
-          cp *.PDS in/.
-          ls -l in
+          mkdir ./in_dir
+          cp *.PDS in_dir/.
+          ls -l in_dir
           echo "Output Directory:"
-          mkdir ./out
-          cp in/*.PDS out/.
-          ls -l out
+          mkdir ./out_dir
+          cp in_dir/*.PDS out_dir/.
+          ls -l out_dir
 
 hints:
   DockerRequirement:
@@ -39,12 +39,10 @@ inputs:
     type: Directory
 
 outputs:
-  dataset_dirs:
-    type:
-      type: array
-      items: Directory
+  output_dir:
+    type: Directory
     outputBinding:
-      glob: "dumby-product-*"
+      glob: "out_dir"
   stdout_file:
     type: stdout
   stderr_file:
