@@ -5,15 +5,25 @@ class: CommandLineTool
 
 requirements:
   InlineJavascriptRequirement: {}
+  InitialWorkDirRequirement:
+    listing:
+      - entryname: my_script.sh
+        entry: |-
+          echo "Input Directory:"
+          ls -l $1
+          echo "Static Directory:"
+          ls -lR $2
+          echo "Output Directory:"
+          ls -lR $3
 
 hints:
   DockerRequirement:
     dockerPull: alpine:latest
-baseCommand: [ls]
+baseCommand: ["sh", "my_script.sh"]
 arguments: [
-  "-l",
   "$(runtime.tmpdir)",
-  "$(inputs.static_dir)"
+  "$(inputs.static_dir)",
+  "$(runtime.outdir)"
 ]
 
 inputs:
