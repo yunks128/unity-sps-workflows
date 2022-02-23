@@ -1,3 +1,6 @@
+source_files:
+- {class: File, path: P1570011AAAAAAAAAAAAAT16014214620701.PDS}
+- {class: File, path: P1570515ATMSSCIENCEAAT16014215930700.PDS}
 static_dir: 
   class: Directory
   path: /Users/cinquini/data/SOUNDER_SIPS

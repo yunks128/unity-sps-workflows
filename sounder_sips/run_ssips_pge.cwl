@@ -7,6 +7,7 @@ requirements:
   InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
     listing:
+      - $(inputs.source_files)
       - entryname: my_script.sh
         entry: |-
           echo "Input Directory:"
@@ -27,6 +28,8 @@ arguments: [
 ]
 
 inputs:
+  source_files:
+    type: File[]
   static_dir:
     type: Directory
 
