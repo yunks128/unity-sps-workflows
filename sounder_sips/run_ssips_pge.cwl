@@ -10,21 +10,26 @@ requirements:
       - $(inputs.source_files)
       - entryname: my_script.sh
         entry: |-
-          echo "Input Directory:"
+          echo "Working Directory:"
           ls -l $1
           echo "Static Directory:"
-          ls -lR $2
+          ls -l $2
+          echo "Input Directory:"
+          mkdir ./in
+          cp *.PDS in/.
+          ls -l in
           echo "Output Directory:"
-          ls -lR $3
+          mkdir ./out
+          cp in/*.PDS out/.
+          ls -l out
 
 hints:
   DockerRequirement:
     dockerPull: alpine:latest
 baseCommand: ["sh", "my_script.sh"]
 arguments: [
-  "$(runtime.tmpdir)",
-  "$(inputs.static_dir)",
-  "$(runtime.outdir)"
+  "$(runtime.outdir)",
+  "$(inputs.static_dir)"
 ]
 
 inputs:
