@@ -10,6 +10,7 @@ $namespaces:
 hints:
   "cwltool:Secrets":
     secrets:
+      - aws_region
       - aws_access_key_id
       - aws_secret_access_key
       - aws_session_token
@@ -22,7 +23,7 @@ requirements:
         entry: |
           [default]
           output = json
-          region = us-gov-west-1
+          region = $(inputs.aws_region)
           aws_access_key_id = $(inputs.aws_access_key_id)
           aws_secret_access_key = $(inputs.aws_secret_access_key)
           aws_session_token = $(inputs.aws_session_token)
@@ -40,6 +41,7 @@ inputs:
     type: string
   source_s3_filename:
     type: string
+  aws_region: string
   aws_access_key_id: string
   aws_secret_access_key: string
   aws_session_token: string
