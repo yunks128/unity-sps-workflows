@@ -1,0 +1,13 @@
+source_s3_folders:
+- s3://unity-sps/sounder_sips/in/atms_science
+- s3://unity-sps/sounder_sips/in/ephatt
+source_s3_filenames:
+- P1570515ATMSSCIENCEAAT16014215930700.PDS
+- P1570011AAAAAAAAAAAAAT16014214620701.PDS
+static_dir:
+  class: Directory
+  path: /Users/cinquini/data/SOUNDER_SIPS
+aws_region: us-west-1
+aws_access_key_id: ........
+aws_secret_access_key: .........
+aws_session_token: .........
