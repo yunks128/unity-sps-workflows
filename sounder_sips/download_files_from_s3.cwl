@@ -33,6 +33,12 @@ outputs:
    target_local_filenames:
      type: File[]
      outputSource: [download_file_from_s3/target_local_filename]
+   stdout_files:
+     type: File[]
+     outputSource: [download_file_from_s3/stdout_file]
+   stderr_files:
+     type: File[]
+     outputSource: [download_file_from_s3/stderr_file]
 
 steps:
   download_file_from_s3:
@@ -48,7 +54,5 @@ steps:
       aws_session_token: aws_session_token
     out:
     - target_local_filename
-
-#stdout: stdout_download_files_from_s3.txt
-#stderr: stderr_download_files_from_s3.txt
-
+    - stdout_file
+    - stderr_file

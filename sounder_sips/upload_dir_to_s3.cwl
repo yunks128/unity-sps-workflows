@@ -61,6 +61,6 @@ outputs:
     type: stdout
   stderr_file:
     type: stderr
-stdout: stdout_upload_dir_to_s3.txt
-stderr: stderr_upload_dir_to_s3.txt
+stdout: upload_dir_to_s3_stdout.txt
+stderr: upload_dir_to_s3_stderr.txt
 

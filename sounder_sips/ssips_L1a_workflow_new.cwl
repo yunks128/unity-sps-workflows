@@ -35,12 +35,24 @@ inputs:
   aws_session_token: string
 
 outputs:
+  stdout_l1a-stage-in:
+    type: File[]
+    outputSource: l1a-stage-in/stdout_files
+  stderr_l1a-stage-in:
+    type: File[]
+    outputSource: l1a-stage-in/stderr_files
   stdout_l1a-run-pge:
     type: File
     outputSource: l1a-run-pge/stdout_file
   stderr_l1a-run-pge:
     type: File
     outputSource: l1a-run-pge/stderr_file
+  stdout_l1a-stage-out:
+    type: File
+    outputSource: l1a-stage-out/stdout_file
+  stderr_l1a-stage-out:
+    type: File
+    outputSource: l1a-stage-out/stderr_file
 
 steps:
   l1a-stage-in:
@@ -54,6 +66,8 @@ steps:
       aws_session_token: aws_session_token
     out:
     - target_local_filenames
+    - stdout_files
+    - stderr_files
 
   l1a-run-pge:
     run: run_ssips_pge.cwl
