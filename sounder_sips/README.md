@@ -3,7 +3,7 @@ This directory contains the CWL and supporting files needed to execute the desig
 At this time, fake PGEs and input data are used.
 
 ## Pre-requisites
-- Read/Write permissions to an S3 bucket pre-populated with the required input files. For example, Read/Write permissions to the S3 bucket "s3://unity-sps/" in the AWS "jpl-mipl" account, where the Sounder SIPS input files have been staged.
+- Read/Write permissions to an S3 bucket pre-populated with the required input files. For example, Read/Write permissions to the S3 bucket "s3://unity-sps/" and "s3://unity-ads" in the AWS "jpl-mipl" account, where the Sounder SIPS input files have been staged.
 - Pre-download of the Sounder SIPS static data to a local directory:
 ```
 cd <any directory>
@@ -33,7 +33,7 @@ cd sounder_sips
 aws-login -pub
 ...
 Please choose the role you would like to assume:
-[0] jpl-miple / power_user ---->....
+[0] jpl-mipl / power_user ---->....
 ...
 Credential file /Users/...../.aws/config has been successfully updated. To use you must specify the profile 'saml-pub'.
 ```
@@ -47,7 +47,7 @@ source <path to venv location>/env/bin/activate
 
 - Edit the file ssips_L1a_workflow_job_new.yml which contains the specific user parameters used by the workflow:
   - Adjust the value of _static_dir_ to the local directory where the Sounder SIPS static files were downloaded
-  - cut-and-paste the value of the AWS keys (_aws_access_key_id_, _aws_secret_access_key_, _aws_session_token_) from the values for the selected profile included in the AWS credential file _~/.aws/credentials 
+  - cut-and-paste the value of the AWS keys (_aws_access_key_id_, _aws_secret_access_key_, _aws_session_token_) from the values for the selected profile included in the AWS credential file _~/.aws/credentials_ .
 
 - Execute the workflow:
 ```
@@ -60,7 +60,7 @@ cwl-runner ssips_L1a_workflow_new.cwl ssips_L1a_workflow_job_new.yml
 - Edit the file _ssips_L1a_L1b_workflow_job.yml_ which contains the specific user parameters used by the workflow:
   - Adjust the value of _l1a_workflow_source_s3_folder_ to match your S3 input bucket (where the input test file is stored)
   - Adjust the value of _l1a_workflow_target_s3_folder_ and _l1b_workflow_target_s3_folder_ to the desired S3 locations where the output files will be written  (the target S3 folder must exist, but the target S3 folders within it don't have to)
-  - cut-and-paste the value of the AWS keys (_workflow_aws_access_key_id_, _workflow_aws_secret_access_key_, _workflow_aws_session_token_) from the values for the selected profile included in the AWS credential file _~/.aws/credentials
+  - cut-and-paste the value of the AWS keys (_workflow_aws_access_key_id_, _workflow_aws_secret_access_key_, _workflow_aws_session_token_) from the values for the selected profile included in the AWS credential file _~/.aws/credentials_ .
 
 - Execute the workflow:
 ```
