@@ -23,10 +23,8 @@ requirements:
   StepInputExpressionRequirement: {}
 
 inputs:
-  source_s3_folders:
-    type: string[]
-  source_s3_filenames:
-    type: string[]
+  source_s3_folder: string
+  source_s3_subdir: string
   static_dir: Directory
   target_s3_folder: string
   aws_region: string
@@ -36,11 +34,11 @@ inputs:
 
 outputs:
   stdout_l1a-stage-in:
-    type: File[]
-    outputSource: l1a-stage-in/stdout_files
+    type: File
+    outputSource: l1a-stage-in/stdout_file
   stderr_l1a-stage-in:
-    type: File[]
-    outputSource: l1a-stage-in/stderr_files
+    type: File
+    outputSource: l1a-stage-in/stderr_file
   stdout_l1a-run-pge:
     type: File
     outputSource: l1a-run-pge/stdout_file
@@ -56,23 +54,23 @@ outputs:
 
 steps:
   l1a-stage-in:
-    run: download_files_from_s3.cwl
+    run: download_dir_from_s3.cwl
     in:
-      source_s3_folders: source_s3_folders
-      source_s3_filenames: source_s3_filenames
+      source_s3_folder: source_s3_folder
+      source_s3_subdir: source_s3_subdir
       aws_region: aws_region
       aws_access_key_id: aws_access_key_id
       aws_secret_access_key: aws_secret_access_key
       aws_session_token: aws_session_token
     out:
-    - target_local_filenames
-    - stdout_files
-    - stderr_files
+    - target_local_subdir
+    - stdout_file
+    - stderr_file
 
   l1a-run-pge:
     run: run_ssips_pge.cwl
     in:
-      source_files: l1a-stage-in/target_local_filenames
+      input_dir: l1a-stage-in/target_local_subdir
       static_dir: static_dir
     out:
     - output_dir
