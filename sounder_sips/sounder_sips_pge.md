@@ -5,6 +5,12 @@ Below, `<some directory>` can be any directory, `<account number>` is the JPL MI
 
 ## Renew the AWS credentials
 ```
+aws-login -pub
+```
+Credentials will be written for the _saml-pub_ profile.
+
+## Download the input data
+```
 cd <some directory>
 mkdir input
 cd input
@@ -19,4 +25,12 @@ mkdir static
 cd static
 aws s3 cp s3://unity-ads/sounder_sips/static_files/ . --recursive --profile saml-pub
 export PGE_STATIC_DIR=`pwd`
+```
+
+## Create the output directory
+```
+cd <some directory>
+mkdir output
+cd output
+export PGE_OUT_DIR=`pwd`
 ```
