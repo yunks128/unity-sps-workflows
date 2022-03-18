@@ -7,30 +7,30 @@ requirements:
   InlineJavascriptRequirement: {}
   InitialWorkDirRequirement:
     listing:
-      - $(inputs.input_dir)
-      - $(inputs.static_dir)
+      #- $(inputs.input_dir)
+      #- $(inputs.static_dir)
       - entryname: my_script.sh
         entry: |-
           export input_dir=$3
           export output_dir=$6
           export static_dir=$9
-          mkdir -p /pge/in /pge/out
-          cp -R $input_dir/* /pge/in/.
           echo "Input Directory:"
-          ls -l /pge/in
+          ls -l $input_dir
           echo "Static Directory:"
           ls -l $static_dir
-
-          papermill /pge/interface/run_l1a_pge.ipynb -p input_path /pge/in -p output_path /pge/out -p data_static_path $static_dir -
-          #cp -R /pge/in/* /pge/out/.
-          cp -R /pge/out .
           echo "Output Directory:"
-          ls -lR ./out
+          mkdir -p $output_dir
+          ls -l $output_dir
 
+          papermill /pge/interface/run_l1a_pge.ipynb -p input_path $input_dir -p output_path $output_dir -p data_static_path $static_dir -
+          echo "Output Directory:"
+          ls -lR $output_dir
+          echo "Input Directory:"
+          ls -l $input_dir
 
 hints:
   DockerRequirement:
-    dockerPull: unity-sds/sounder_sips_l1a_pge:r0.1.0
+    dockerPull: unity-sds/sounder_sips_l1a_pge:r0.1.0-noentrypoint
   EnvVarRequirement:
       envDef:
         SIPS_STATIC_DIR: $(inputs.static_dir.path)
