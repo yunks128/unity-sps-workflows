@@ -2,7 +2,7 @@
 
 cwlVersion: v1.0
 class: Workflow
-label: Workflow that executes the Sounder SIPS end-to-end L1a processing
+label: Workflow that executes the Sounder SIPS end-to-end L1b processing
 doc: Requires valid AWS credentials as input arguments
 
 $namespaces:
@@ -33,21 +33,21 @@ inputs:
   aws_session_token: string
 
 outputs:
-  stdout_l1a-stage-in:
+  stdout_l1b-stage-in:
     type: File
-    outputSource: l1a-stage-in/stdout_file
-  stderr_l1a-stage-in:
+    outputSource: l1b-stage-in/stdout_file
+  stderr_l1b-stage-in:
     type: File
-    outputSource: l1a-stage-in/stderr_file
-  stdout_l1a-run-pge:
+    outputSource: l1b-stage-in/stderr_file
+  stdout_l1b-run-pge:
     type: File
-    outputSource: l1a-run-pge/stdout_file
-  stderr_l1a-run-pge:
+    outputSource: l1b-run-pge/stdout_file
+  stderr_l1b-run-pge:
     type: File
-    outputSource: l1a-run-pge/stderr_file
+    outputSource: l1b-run-pge/stderr_file
 
 steps:
-  l1a-stage-in:
+  l1b-stage-in:
     run: download_dir_from_s3.cwl
     in:
       source_s3_folder: source_s3_folder
@@ -61,10 +61,10 @@ steps:
     - stdout_file
     - stderr_file
 
-  l1a-run-pge:
-    run: run_ssips_pge.cwl
+  l1b-run-pge:
+    run: run_ssips_L1b_pge.cwl
     in:
-      input_dir: l1a-stage-in/target_local_subdir
+      input_dir: l1b-stage-in/target_local_subdir
       static_dir: static_dir
     out:
     - stdout_file

@@ -30,12 +30,12 @@ requirements:
 
 hints:
   DockerRequirement:
-    dockerPull: unity-sds/sounder_sips_l1a_pge:r0.1.0-noentrypoint
+    dockerPull: unity-sds/sounder_sips_l1a_pge:r0.1.0
   EnvVarRequirement:
       envDef:
         SIPS_STATIC_DIR: $(inputs.static_dir.path)
 
-baseCommand: ["sh", "my_script.sh"]
+#baseCommand: ["sh", "my_script.sh"]
 #baseCommand: ["papermill", "/pge/interface/run_l1a_pge.ipynb"]
 arguments: [
   "-p",
@@ -46,7 +46,8 @@ arguments: [
   "$(runtime.outdir)/out",
   "-p",
   "data_static_path",
-  "$(inputs.static_dir)" 
+  "$(inputs.static_dir)",
+  "-"
 ]
 
 
@@ -57,10 +58,6 @@ inputs:
     type: Directory
 
 outputs:
-  output_dir:
-    type: Directory
-    outputBinding:
-      glob: "out"
   stdout_file:
     type: stdout
   stderr_file:
