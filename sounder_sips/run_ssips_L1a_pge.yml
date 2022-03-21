@@ -1,0 +1,6 @@
+input_dir:
+  class: Directory
+  path: /Users/cinquini/data/SOUNDER_SIPS/L1A_INPUT
+static_dir:
+  class: Directory
+  path: /Users/cinquini/data/SOUNDER_SIPS/STATIC_DATA
