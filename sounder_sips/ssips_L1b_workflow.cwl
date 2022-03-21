@@ -60,7 +60,7 @@ outputs:
 
 steps:
   l1b-stage-in:
-    run: download_dir_from_s3.cwl
+    run: utils/download_dir_from_s3.cwl
     in:
       source_s3_folder: source_s3_folder
       source_s3_subdir: source_s3_subdir
@@ -84,7 +84,7 @@ steps:
     - stderr_file
 
   l1b-stage-out:
-    run: upload_dir_to_s3.cwl
+    run: utils/upload_dir_to_s3.cwl
     in:
       source_local_subdir: l1b-run-pge/output_dir
       target_s3_folder: target_s3_folder
