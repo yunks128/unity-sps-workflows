@@ -1,6 +1,7 @@
-# Sounder SIPS PGE
+# Sounder SIPS PGEs
 
-Instructions for executing the Sounder SIPS PGE as standalone Docker container.
+Instructions for executing the Sounder SIPS L1a and L1b PGEs as standalone Docker containers.
+The two PGEs can be executed independently - i.e. the L1b PGE can be executed first without executing the L1a PGE.
 Below, `<some directory>` can be any directory, `<aws account number>` is the JPL MIPL AWS account number.
 
 ## Renew the AWS credentials
