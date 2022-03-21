@@ -45,6 +45,18 @@ outputs:
   stderr_l1b-run-pge:
     type: File
     outputSource: l1b-run-pge/stderr_file
+  stdout_stage-out:
+    type: File
+    outputSource: l1b-stage-out/stdout_file
+  stderr_stage-out:
+    type: File
+    outputSource: l1b-stage-out/stderr_file
+  output_target_s3_folder:
+    type: string
+    outputSource: l1b-stage-out/target_s3_folder
+  output_target_s3_subdir:
+    type: string
+    outputSource: l1b-stage-out/target_s3_subdir
 
 steps:
   l1b-stage-in:
@@ -67,5 +79,22 @@ steps:
       input_dir: l1b-stage-in/target_local_subdir
       static_dir: static_dir
     out:
+    - output_dir
     - stdout_file
     - stderr_file
+
+  l1b-stage-out:
+    run: upload_dir_to_s3.cwl
+    in:
+      source_local_subdir: l1b-run-pge/output_dir
+      target_s3_folder: target_s3_folder
+      aws_region: aws_region
+      aws_access_key_id: aws_access_key_id
+      aws_secret_access_key: aws_secret_access_key
+      aws_session_token: aws_session_token
+    out:
+    - target_s3_folder
+    - target_s3_subdir
+    - stdout_file
+    - stderr_file
+

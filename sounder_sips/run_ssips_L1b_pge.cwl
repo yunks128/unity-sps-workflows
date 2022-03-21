@@ -58,6 +58,10 @@ inputs:
     type: Directory
 
 outputs:
+  output_dir:
+    type: Directory
+    outputBinding:
+      glob: "out"
   stdout_file:
     type: stdout
   stderr_file:
