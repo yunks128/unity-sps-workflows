@@ -11,9 +11,10 @@ $namespaces:
 hints:
   "cwltool:Secrets":
     secrets:
-      - workflow_aws_access_key_id
-      - workflow_aws_secret_access_key
-      - workflow_aws_session_token
+      - aws_region
+      - aws_access_key_id
+      - aws_secret_access_key
+      - aws_session_token
 
 requirements:
   SubworkflowFeatureRequirement: {}
@@ -22,78 +23,77 @@ requirements:
   StepInputExpressionRequirement: {}
 
 inputs:
-  workflow_source_s3_folder: string
-  workflow_source_s3_filename: string
-  workflow_product_id: string
-  workflow_min_sleep: int
-  workflow_max_sleep: int
-  workflow_target_s3_folder: string
-  workflow_aws_access_key_id: string
-  workflow_aws_secret_access_key: string
-  workflow_aws_session_token: string
+  source_s3_folder: string
+  source_s3_subdir: string
+  static_dir: Directory
+  target_s3_folder: string
+  aws_region: string
+  aws_access_key_id: string
+  aws_secret_access_key: string
+  aws_session_token: string
 
 outputs:
-  workflow_target_s3_folders:
-    type: string[]
-    outputSource: [l1a-stage-out/target_s3_folder]
-  workflow_target_s3_subdirs:
-    type: string[]
-    outputSource: [l1a-stage-out/target_s3_subdir]
-  stdout_l1a-stage-in:
+  stdout_stage-in:
     type: File
     outputSource: l1a-stage-in/stdout_file
-  stderr_l1a-stage-in:
+  stderr_stage-in:
     type: File
     outputSource: l1a-stage-in/stderr_file
-  stdout_l1a-run-pge:
+  stdout_run-pge:
     type: File
     outputSource: l1a-run-pge/stdout_file
-  stderr_l1a-run-pge:
+  stderr_run-pge:
     type: File
     outputSource: l1a-run-pge/stderr_file
-  #stdout_stage-out:
-  #  type: File
-  #  outputSource: stage-out/stdout_file
-  #stderr_stage-out:
-  #  type: File
-  #  outputSource: stage-out/stderr_file
+  stdout_stage-out:
+    type: File
+    outputSource: l1a-stage-out/stdout_file
+  stderr_stage-out:
+    type: File
+    outputSource: l1a-stage-out/stderr_file
+  output_target_s3_folder:
+    type: string
+    outputSource: l1a-stage-out/target_s3_folder
+  output_target_s3_subdir:
+    type: string
+    outputSource: l1a-stage-out/target_s3_subdir
 
 steps:
   l1a-stage-in:
-    run: download_file_from_s3.cwl
+    run: utils/download_dir_from_s3.cwl
     in:
-      source_s3_folder: workflow_source_s3_folder
-      source_s3_filename: workflow_source_s3_filename
-      aws_access_key_id: workflow_aws_access_key_id
-      aws_secret_access_key: workflow_aws_secret_access_key
-      aws_session_token: workflow_aws_session_token
+      source_s3_folder: source_s3_folder
+      source_s3_subdir: source_s3_subdir
+      aws_region: aws_region
+      aws_access_key_id: aws_access_key_id
+      aws_secret_access_key: aws_secret_access_key
+      aws_session_token: aws_session_token
     out:
-    - target_local_filename
+    - target_local_subdir
     - stdout_file
     - stderr_file
 
   l1a-run-pge:
     run: run_ssips_L1a_pge.cwl
     in:
-      product_id: workflow_product_id
-      min_sleep: workflow_min_sleep
-      max_sleep: workflow_max_sleep
-      input_file: l1a-stage-in/target_local_filename
+      input_dir: l1a-stage-in/target_local_subdir
+      static_dir: static_dir
     out:
-    - dataset_dirs
+    - output_dir
     - stdout_file
     - stderr_file
 
   l1a-stage-out:
-    run: upload_dir_to_s3.cwl
-    scatter: source_local_subdir
+    run: utils/upload_dir_to_s3.cwl
     in:
-      aws_access_key_id: workflow_aws_access_key_id
-      aws_secret_access_key: workflow_aws_secret_access_key
-      aws_session_token: workflow_aws_session_token
-      source_local_subdir: l1a-run-pge/dataset_dirs
-      target_s3_folder: workflow_target_s3_folder
+      source_local_subdir: l1a-run-pge/output_dir
+      target_s3_folder: target_s3_folder
+      aws_region: aws_region
+      aws_access_key_id: aws_access_key_id
+      aws_secret_access_key: aws_secret_access_key
+      aws_session_token: aws_session_token
     out:
-      - target_s3_folder
-      - target_s3_subdir
-
+    - target_s3_folder
+    - target_s3_subdir
+    - stdout_file
+    - stderr_file
