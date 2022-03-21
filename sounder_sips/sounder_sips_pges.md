@@ -1,6 +1,6 @@
 # Sounder SIPS PGEs
 
-Instructions for executing the Sounder SIPS L1a and L1b PGEs as standalone Docker containers.
+This page contains the instructions for executing the Sounder SIPS L1a and L1b PGEs as standalone Docker containers.
 The two PGEs can be executed independently - i.e. the L1b PGE can be executed first without prior execution of the L1a PGE.
 Below, `<some directory>` can be any directory, `<aws account number>` is the JPL MIPL AWS account number.
 
@@ -66,4 +66,5 @@ docker run --rm \
     ${DOCKER_IMAGE}:${DOCKER_TAG} \
     -p input_path /pge/in -p output_path /pge/out -p data_static_path /tmp/static
 ```
-The execution will last approximately two hours and write output in the $PGE_OUT_DIR directory.
+The execution of the L1a Docker container will last approximately two hours and write output in the $PGE_OUT_DIR directory.
+The execution of the L1b Docker container will last only a few minutes and again write output in the $PGE_OUT_DIR directory.
