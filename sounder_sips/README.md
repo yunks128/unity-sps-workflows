@@ -10,15 +10,15 @@ cd <any directory>
 aws s3 cp s3://unity-ads/sounder_sips/static_files/ ./SOUNDER_SIPS --profile <the AWS profile with the appropriate privileges>
 ```
 - A python virtual environment with the latest version of the CWL libraries installed. For example, such an environment can be created as follows:
-- The latest version of the Sounder SIPS Docker containers built on or downloaded to the local laptop:
-  - unity-sds/sounder_sips_l1a_pge:r0.3.0
-  - unity-sds/sounder_sips_l1b_pge:r0.3.0
 ```
 cd <any working directory>
 virtualenv cwl_venv
 source cwl_venv/bin/activate
 pip install cwltool cwl-runner
 ```
+- The latest version of the Sounder SIPS Docker containers built on or downloaded to the local laptop, which at this time is:
+  - unity-sds/sounder_sips_l1a_pge:r0.3.0
+  - unity-sds/sounder_sips_l1b_pge:r0.3.0
 
 
 ## Steps
@@ -46,17 +46,21 @@ Credential file /Users/...../.aws/config has been successfully updated. To use y
 source <path to venv location>/env/bin/activate
 ```
 
-## Latest Sounder SIPS Workflow
+## Latest Sounder SIPS L1A, L1B Workflows 
 
-- Edit the file ssips_L1a_workflow_job_new.yml which contains the specific user parameters used by the workflow:
+The steps to execute the L1A and L1B workflows are practically the same.
+
+- Edit the file ssips_L1a_workflow_job_new.yml or ssips_L1b_workflow_job_new.yml which contains the specific user parameters used by the workflow:
   - Adjust the value of _static_dir_ to the local directory where the Sounder SIPS static files were downloaded
   - cut-and-paste the value of the AWS keys (_aws_access_key_id_, _aws_secret_access_key_, _aws_session_token_) from the values for the selected profile included in the AWS credential file _~/.aws/credentials_ .
 
 - Execute the workflow:
 ```
 cwl-runner ssips_L1a_workflow_new.cwl ssips_L1a_workflow_job_new.yml
+or:
+cwl-runner ssips_L1b_workflow_new.cwl ssips_L1b_workflow_job_new.yml
 ```
-- After the workflow completes, verify that fake output files have been created in the target S3 bucket s3://unity-sps/sounder_sips/out/out_dir/
+- After the workflow completes, verify that fake output files have been created in the target S3 bucket s3://unity-sps/sounder_sips/l1a/out/ or s3://unity-sps/sounder_sips/l1b/out, respectively.
 
 ## Older Sounder SIPS L1a+L1b combined Workflow
 
