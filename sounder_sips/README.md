@@ -1,6 +1,6 @@
 # Sounder SIPS Workflows
 This directory contains the CWL and supporting files needed to execute the designated Sounder SIPS L1a, L1b workflows.
-At this time, fake PGEs and input data are used.
+The workflows execute the most recent version of the real (conteinerized) L1A and L1B PGEs.
 
 ## Pre-requisites
 - Read/Write permissions to an S3 bucket pre-populated with the required input files. For example, Read/Write permissions to the S3 bucket "s3://unity-sps/" and "s3://unity-ads" in the AWS "jpl-mipl" account, where the Sounder SIPS input files have been staged.
@@ -10,6 +10,9 @@ cd <any directory>
 aws s3 cp s3://unity-ads/sounder_sips/static_files/ ./SOUNDER_SIPS --profile <the AWS profile with the appropriate privileges>
 ```
 - A python virtual environment with the latest version of the CWL libraries installed. For example, such an environment can be created as follows:
+- The latest version of the Sounder SIPS Docker containers built on or downloaded to the local laptop:
+  - unity-sds/sounder_sips_l1a_pge:r0.3.0
+  - unity-sds/sounder_sips_l1b_pge:r0.3.0
 ```
 cd <any working directory>
 virtualenv cwl_venv
