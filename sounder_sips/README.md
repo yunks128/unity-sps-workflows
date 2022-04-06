@@ -56,9 +56,9 @@ The steps to execute the L1A and L1B workflows are practically the same.
 
 - Execute the workflow:
 ```
-cwl-runner ssips_L1a_workflow_new.cwl ssips_L1a_workflow_job_new.yml
+cwl-runner --no-match-user --no-read-only ssips_L1a_workflow.cwl ssips_L1a_workflow.yml
 or:
-cwl-runner ssips_L1b_workflow_new.cwl ssips_L1b_workflow_job_new.yml
+cwl-runner --no-match-user --no-read-only ssips_L1b_workflow.cwl ssips_L1b_workflow.yml
 ```
 - After the workflow completes, verify that fake output files have been created in the target S3 bucket s3://unity-sps/sounder_sips/l1a/out/ or s3://unity-sps/sounder_sips/l1b/out, respectively.
 
