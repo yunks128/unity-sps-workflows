@@ -37,7 +37,7 @@ hints:
         SIPS_STATIC_DIR: $(inputs.static_dir.path)
 
 #baseCommand: ["sh", "my_script.sh"]
-baseCommand: ["papermill", "/pge/interface/run_l1b_pge.ipynb"]
+#baseCommand: ["papermill", "/pge/interface/run_l1b_pge.ipynb"]
 arguments: [
   "$(runtime.outdir)/processed_notebook.ipynb",
   "-p",
