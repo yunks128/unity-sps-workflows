@@ -48,8 +48,7 @@ arguments: [
   "$(runtime.outdir)/out",
   "-p",
   "data_static_path",
-  "$(inputs.static_dir)",
-  "-"
+  "$(inputs.static_dir)"
 ]
 
 
