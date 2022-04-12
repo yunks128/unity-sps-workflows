@@ -1,0 +1,79 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: calrissian-job
+spec:
+  template:
+    spec:
+      containers:
+      - name: calrissian-job
+        image: pymonger/calrissian:latest
+        imagePullPolicy: Always
+        envFrom:
+          - secretRef:
+              name: aws-creds
+        command: ["calrissian"]
+        args:
+          - "--debug"
+          - "--stdout"
+          - "/calrissian/output-data/docker-output.json"
+          - "--stderr"
+          - "/calrissian/output-data/docker-stderr.log"
+          - "--max-ram"
+          - "16G"
+          - "--max-cores"
+          - "8"
+          - "--tmp-outdir-prefix"
+          - "/calrissian/tmpout/"
+          - "--outdir"
+          - "/calrissian/output-data/"
+          - "--usage-report"
+          - "/calrissian/output-data/docker-usage.json"
+          - "https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/junk/sounder_sips/ssips_L1b_workflow.cwl"
+          - "--source_s3_folder"
+          - "s3://unity-sps/sounder_sips/l1b"
+          - "--source_s3_subdir"
+          - "in"
+          - "--static_dir"
+          - "/calrissian/static-data"
+          - "--target_s3_folder"
+          - "s3://unity-sps/sounder_sips/l1b"
+          - "--aws_region"
+          - "us-west-1"
+          - "--aws_access_key_id"
+          - "$(aws_access_key_id)"
+          - "--aws_secret_access_key"
+          - "$(aws_secret_access_key)"
+          - "--aws_session_token"
+          - "$(aws_session_token)"
+        volumeMounts:
+        - mountPath: /calrissian/input-data
+          name: calrissian-input-data
+          readOnly: true
+        - mountPath: /calrissian/tmpout
+          name: calrissian-tmpout
+        - mountPath: /calrissian/output-data
+          name: calrissian-output-data
+        - mountPath: /calrissian/static-data
+          name: calrissian-static-data
+        env:
+        - name: CALRISSIAN_POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name
+      restartPolicy: Never
+      volumes:
+      - name: calrissian-input-data
+        persistentVolumeClaim:
+          claimName: calrissian-input-data
+          readOnly: true
+      - name: calrissian-tmpout
+        persistentVolumeClaim:
+          claimName: calrissian-tmpout
+      - name: calrissian-output-data
+        persistentVolumeClaim:
+          claimName: calrissian-output-data
+      - name: calrissian-static-data
+        persistentVolumeClaim:
+          claimName: calrissian-static-data
