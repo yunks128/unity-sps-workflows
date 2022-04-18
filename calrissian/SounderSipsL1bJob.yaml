@@ -30,7 +30,7 @@ spec:
           - "/calrissian/output-data/"
           - "--usage-report"
           - "/calrissian/output-data/docker-usage.json"
-          - "https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/ssips_L1b_workflow.cwl"
+          - "https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/calrissian/sounder_sips/ssips_L1b_workflow.cwl"
           - "--source_s3_folder"
           - "s3://unity-sps/sounder_sips/l1b"
           - "--source_s3_subdir"
