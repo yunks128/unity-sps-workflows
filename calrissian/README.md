@@ -94,8 +94,9 @@ kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future versi
   - A container "dind-daemon" that runs an internal Docker engine (via the "docker-in-docker" pattern)
   - A container "docker-cmds" that represents a "makeshift" worker node which will submit a "docker run" command to the internal Docker engine accessible at: tcp://localhost:2375
   Note that the "dind-daemon" container mounts two volumes that gives it access to the kube-config file to interact with the Kubernetes cluster, and the current directory that contains the definition of the CWL workflow to run.
+  Note also that before creating the Pod, the Kubernetes file is parsed by the `envsubst` tool to replace the environment variables $HOME and $PWD with the current values.
 ```
-kubectl create -f dind.yaml -n $NAMESPACE_NAME 
+envsubst < dind.yaml | kubectl create -n $NAMESPACE_NAME -f - 
 
 kubectl get pods -n $NAMESPACE_NAME 
 NAME        READY   STATUS    RESTARTS   AGE
@@ -107,8 +108,7 @@ dind        2/2     Running   0          15s
 ```
 kubectl exec -it dind -c docker-cmds -- sh
 
-docker run --rm --name kubectl -v /.kube/config:/.kube/config -v /working-dir:/working-dir -w /working-dir bitnami/kubectl:lat
-est create -f SounderSipsL1bJob.yaml -n unity-sps
+docker run --rm --name kubectl -v /.kube/config:/.kube/config -v /working-dir:/working-dir -w /working-dir bitnami/kubectl:latest create -f SounderSipsL1bJob.yaml -n unity-sps
 job.batch/calrissian-job created
 ```
 
