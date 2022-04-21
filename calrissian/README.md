@@ -1,6 +1,6 @@
 # Executing the Sounder SIPS Workflows via Calrissian
 This page explains how to execute the Sounder SIPS L1b CWL workflow within a Kubernetes cluster using the Calrissian tool.
-[https://github.com/Duke-GCB/calrissian] Calrissian is a CWL implementation for executing workflows onto a Kubernetes cluster, which runs every single step of a CWL workflow on a separate Kubernetes Pod.
+[Calrissian](https://github.com/Duke-GCB/calrissian) is a CWL implementation for executing workflows on a Kubernetes cluster, which runs every step of the CWL workflow on a separate Kubernetes Pod.
 
 ## Pre-requisites
 - Docker engine installed on private laptop, including running the associated local Kubernetes cluster.
@@ -27,6 +27,26 @@ git clone https://github.com/unity-sds/unity-sps-workflows.git
 cd unity-sps-workflows
 git checkout calrissian
 cd calrissian
+```
+
+- Create a Kubernetes secret holding valid AWS credentials to download and upload data from/to the proper AWS account
+(delete any previous existing secret):
+```
+# kubectl delete secret aws-creds -n $NAMESPACE_NAME 
+aws-login -pub
+
+export aws_access_key_id=...
+export aws_secret_access_key=...
+export aws_session_token=...
+
+kubectl --namespace="$NAMESPACE_NAME" create secret generic aws-creds \
+  --from-literal=aws_access_key_id="$aws_access_key_id" \
+  --from-literal=aws_secret_access_key="$aws_secret_access_key"\
+  --from-literal=aws_session_token="$aws_session_token"
+
+kubectl get secrets -n $NAMESPACE_NAME
+NAME                  TYPE                                  DATA   AGE
+aws-creds             Opaque                                3      15s
 ```
 
 - Renew the AWS credentials for which you have Read/Write permissions to the desired S3 bucket. For example:
