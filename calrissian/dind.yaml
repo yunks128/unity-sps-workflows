@@ -6,7 +6,6 @@ spec:
     containers: 
       - name: docker-cmds 
         image: docker:1.12.6 
-        # command: ['docker', 'run', '-p', '80:80', 'httpd:latest'] 
         command: ['tail', '-f', '/dev/null'] 
         resources: 
             requests: 

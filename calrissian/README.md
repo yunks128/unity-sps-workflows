@@ -53,22 +53,11 @@ kubectl get secrets -n $NAMESPACE_NAME
 NAME                  TYPE                                  DATA   AGE
 aws-creds             Opaque                                3      15s
 ```
-
-- Renew the AWS credentials for which you have Read/Write permissions to the desired S3 bucket. For example:
-```
-aws-login -pub
-...
-Please choose the role you would like to assume:
-[0] jpl-mipl / power_user ---->....
-...
-Credential file /Users/...../.aws/config has been successfully updated. To use you must specify the profile 'saml-pub'.
-```
-
 - Create Kubernetes volumes to hold temporary data for the CWL workflow, as well as permanent static data used by the L1b PGE:
 ```
 kubectl create -f VolumeClaims.yaml -n $NAMESPACE_NAME 
 
-k get pvc -n $NAMESPACE_NAME 
+kubectl get pvc -n $NAMESPACE_NAME 
 NAME                     STATUS   VOLUME                                     CAPACITY   ACCESS MODES   STORAGECLASS   AGE
 calrissian-input-data    Bound    pvc-ffca8962-3974-45c7-8a72-fe11acbf6b53   1Gi        RWO,ROX        hostpath       18s
 calrissian-output-data   Bound    pvc-e1d97847-9b67-4e26-ad19-000faf4934e2   1Gi        RWX            hostpath       18s
@@ -78,7 +67,7 @@ calrissian-tmpout        Bound    pvc-7be0664e-dd24-4c96-95a1-227ffbb62885   1Gi
 
 - Create a Kubernetes Pod that is used to access the volumes:
 ```
-k create -f AccessVolumes.yaml -n $NAMESPACE_NAME
+kubectl create -f AccessVolumes.yaml -n $NAMESPACE_NAME
 ```
 
 - Copy the static data from the local disk to the Kubernetes static data volume. Make sure the static files appear at the root level
@@ -86,14 +75,14 @@ of the /calrissian/static-data directory inside the Pod - if not, enter the Pod 
 ```
 kubectl cp <static_data_dir> access-pv:/calrissian/static-data/. -n $NAMESPACE_NAME
 
-k exec -it access-pv -n $NAMESPACE_NAME -- sh -c 'ls -l /calrissian/static-data' 
+kubectl exec -it access-pv -n $NAMESPACE_NAME -- sh -c 'ls -l /calrissian/static-data' 
 total 12
 -rw-r--r-- 1 calrissian root  163 Apr 11 14:15 README.txt
 drwxr-xr-x 4 calrissian root 4096 Apr 11 14:23 dem
 drwxr-xr-x 2 calrissian root 4096 Apr 11 14:27 mcf
 
 # To move data to the proper location inside the Pod:
-# k exec -it access-pv -n $NAMESPACE_NAME sh
+# kubectl exec -it access-pv -n $NAMESPACE_NAME sh
 kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future version. Use kubectl exec [POD] -- [COMMAND] instead.
 # cd /calrissian/static-data
 # mv STATIC_DATA/* .
@@ -101,6 +90,17 @@ kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future versi
 # exit
 ```
 
+- Create a Kubernetes Pod that holds 2 containers:
+  - A container "dind-daemon" that runs an internal Docker engine (via the "docker-in-docker" pattern)
+  - A container "docker-cmds" that represents a "makeshift" worker node which will submit a "docker run" command to the internal Docker engine accessible at: tcp://localhost:2375
+```
+kubectl create -f dind.yaml -n $NAMESPACE_NAME 
+
+kubectl get pods -n $NAMESPACE_NAME 
+NAME        READY   STATUS    RESTARTS   AGE
+access-pv   1/1     Running   0          28m
+dind        2/2     Running   0          15s
+```
 
 
 
