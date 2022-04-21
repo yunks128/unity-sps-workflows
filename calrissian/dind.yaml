@@ -34,7 +34,7 @@ spec:
         emptyDir: {}
       - name: kube-config
         hostPath:
-            path: /Users/cinquini/.kube/config
+            path: $HOME/.kube/config
       - name: working-dir
         hostPath:
-            path: /Users/cinquini/eclipse-workspace-mars2020/unity-sps-workflows/calrissian
+            path: $PWD

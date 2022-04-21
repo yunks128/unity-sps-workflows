@@ -93,6 +93,7 @@ kubectl exec [POD] [COMMAND] is DEPRECATED and will be removed in a future versi
 - Create a Kubernetes Pod that holds 2 containers:
   - A container "dind-daemon" that runs an internal Docker engine (via the "docker-in-docker" pattern)
   - A container "docker-cmds" that represents a "makeshift" worker node which will submit a "docker run" command to the internal Docker engine accessible at: tcp://localhost:2375
+  Note that the "dind-daemon" container mounts two volumes that gives it access to the kube-config file to interact with the Kubernetes cluster, and the current directory that contains the definition of the CWL workflow to run.
 ```
 kubectl create -f dind.yaml -n $NAMESPACE_NAME 
 
@@ -102,38 +103,25 @@ access-pv   1/1     Running   0          28m
 dind        2/2     Running   0          15s
 ```
 
-
-
-- Activate the Python virtual environment:
+- Enter the Docker client container and submit the Calrissian job to execute the CWL workflow:
 ```
-source <path to venv location>/env/bin/activate
+kubectl exec -it dind -c docker-cmds -- sh
+
+docker run --rm --name kubectl -v /.kube/config:/.kube/config -v /working-dir:/working-dir -w /working-dir bitnami/kubectl:lat
+est create -f SounderSipsL1bJob.yaml -n unity-sps
+job.batch/calrissian-job created
 ```
 
-## Latest Sounder SIPS L1A, L1B Workflows 
-
-The steps to execute the L1A and L1B workflows are practically the same.
-
-- Edit the file ssips_L1a_workflow_job_new.yml or ssips_L1b_workflow_job_new.yml which contains the specific user parameters used by the workflow:
-  - Adjust the value of _static_dir_ to the local directory where the Sounder SIPS static files were downloaded
-  - cut-and-paste the value of the AWS keys (_aws_access_key_id_, _aws_secret_access_key_, _aws_session_token_) from the values for the selected profile included in the AWS credential file _~/.aws/credentials_ .
-
-- Execute the workflow:
+- You can follow the execution of the CWL workflow in another window, by printing the logs of the Calrissian Pod until completion:
 ```
-cwl-runner --no-match-user --no-read-only ssips_L1a_workflow.cwl ssips_L1a_workflow.yml
-or:
-cwl-runner --no-match-user --no-read-only ssips_L1b_workflow.cwl ssips_L1b_workflow.yml
-```
-- After the workflow completes, verify that fake output files have been created in the target S3 bucket s3://unity-sps/sounder_sips/l1a/out/ or s3://unity-sps/sounder_sips/l1b/out, respectively.
+kubectl get pods -n $NAMESPACE_NAME                    
+NAME                         READY   STATUS    RESTARTS   AGE
+access-pv                    1/1     Running   0          34m
+calrissian-job-ptl4c         1/1     Running   0          72s
+dind                         2/2     Running   0          6m24s
+l1b-stage-out-pod-gsrpfxud   1/1     Running   0          9s
 
-## Older Sounder SIPS L1a+L1b combined Workflow
+kubectl logs -f calrissian-job-ptl4c -n $NAMESPACE_NAME
+...
 
-- Edit the file _ssips_L1a_L1b_workflow_job.yml_ which contains the specific user parameters used by the workflow:
-  - Adjust the value of _l1a_workflow_source_s3_folder_ to match your S3 input bucket (where the input test file is stored)
-  - Adjust the value of _l1a_workflow_target_s3_folder_ and _l1b_workflow_target_s3_folder_ to the desired S3 locations where the output files will be written  (the target S3 folder must exist, but the target S3 folders within it don't have to)
-  - cut-and-paste the value of the AWS keys (_workflow_aws_access_key_id_, _workflow_aws_secret_access_key_, _workflow_aws_session_token_) from the values for the selected profile included in the AWS credential file _~/.aws/credentials_ .
-
-- Execute the workflow:
 ```
-cwl-runner --no-match-user --no-read-only ssips_L1a_L1b_workflow.cwl ssips_L1a_L1b_workflow_job.yml
-```
-- After the workflow completes, verify that fake L1a and L1b files have been created in the target S3 bucket and folders
