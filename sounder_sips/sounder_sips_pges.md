@@ -57,7 +57,7 @@ docker run --rm \
     -v ${PGE_OUT_DIR}:/pge/out \
     -v ${PGE_STATIC_DIR}:/tmp/static \
     ${DOCKER_IMAGE}:${DOCKER_TAG} \
-    /pge/processed_notebook.ipynb \
+    /tmp/processed_notebook.ipynb \
     -p data_static_path /tmp/static
 ```
 
