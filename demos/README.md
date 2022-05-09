@@ -1,5 +1,5 @@
 # CWL Demos
-This directory contains example CXWL workflows.
+This directory contains example CWL workflows.
 
 ## Pre-requisites
 Create a python virtual environment with the latest version of the CWL libraries installed. For example, such an environment can be created as follows:
@@ -8,6 +8,7 @@ cd <any working directory>
 virtualenv cwl_venv
 source cwl_venv/bin/activate
 pip install cwltool cwl-runner
+```
 
 ## "Echo" example
 
