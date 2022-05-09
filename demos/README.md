@@ -26,3 +26,6 @@ INFO [job echo.cwl] completed success
 {}
 INFO Final process status is success
 ```
+
+The file `echo.cwl` contains the worklow specification, whilethe file echo.yaml contains the value of the parameters (the "message") for this specific workflow instance.
+
