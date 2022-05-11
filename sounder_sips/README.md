@@ -17,8 +17,8 @@ source cwl_venv/bin/activate
 pip install cwltool cwl-runner
 ```
 - The latest version of the Sounder SIPS Docker containers built on or downloaded to the local laptop, which at this time is:
-  - unity-sds/sounder_sips_l1a_pge:r0.3.0
-  - unity-sds/sounder_sips_l1b_pge:r0.3.0
+  - unity-sds/sounder_sips_l1a_pge:r0.1.0
+  - unity-sds/sounder_sips_l1b_pge:r0.1.0
 
 
 ## Steps

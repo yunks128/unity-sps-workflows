@@ -31,7 +31,7 @@ requirements:
 hints:
   DockerRequirement:
     # dockerPull: unity-sds/sounder_sips_l1b_pge:r0.4.0
-    dockerPull: lucacinquini/sounder_sips_l1b_pge:r0.4.0
+    dockerPull: lucacinquini/sounder_sips_l1b_pge:r0.1.0
   EnvVarRequirement:
       envDef:
         SIPS_STATIC_DIR: $(inputs.static_dir.path)

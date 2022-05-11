@@ -74,7 +74,8 @@ steps:
     - stderr_file
 
   l1b-run-pge:
-    run: run_ssips_L1b_pge.cwl
+    # run: run_ssips_L1b_pge.cwl
+    run: l1b_package.cwl
     in:
       input_dir: l1b-stage-in/target_local_subdir
       static_dir: static_dir

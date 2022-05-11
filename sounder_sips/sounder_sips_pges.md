@@ -39,7 +39,7 @@ Set the Docker image and version to use, for example:
 export DOCKER_IMAGE=<aws account number>.dkr.ecr.us-west-1.amazonaws.com/unity-sds/sounder_sips_l1a_pge
 # For L1b
 export DOCKER_IMAGE=<aws account number>.dkr.ecr.us-west-1.amazonaws.com/unity-sds/sounder_sips_l1b_pge
-export DOCKER_TAG=r.0.1.0
+export DOCKER_TAG=r0.1.0
 ```
 
 ## Download the Docker image

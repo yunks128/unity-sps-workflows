@@ -27,6 +27,8 @@ inputs:
   source_s3_subdir: string
   static_dir: Directory
   target_s3_folder: string
+  start_datetime: string
+  end_datetime: string
   aws_region: string
   aws_access_key_id: string
   aws_secret_access_key: string
@@ -74,10 +76,13 @@ steps:
     - stderr_file
 
   l1a-run-pge:
-    run: run_ssips_L1a_pge.cwl
+    # run: run_ssips_L1a_pge.cwl
+    run: l1a_package.cwl
     in:
       input_dir: l1a-stage-in/target_local_subdir
       static_dir: static_dir
+      start_datetime: start_datetime
+      end_datetime: end_datetime
     out:
     - output_dir
     - stdout_file
