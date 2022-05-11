@@ -3,7 +3,7 @@ source_s3_subdir: in
 static_dir:
   class: Directory
   path: /Users/cinquini/data/SOUNDER_SIPS/STATIC_DATA
-target_s3_folder: s3://unity-sps/sounder_sips/l1b
+target_s3_folder: s3://unity-sps/sounder_sips/l1b/out
 aws_region: us-west-1
 aws_access_key_id: .........
 aws_secret_access_key: .............
