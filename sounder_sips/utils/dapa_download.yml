@@ -1,0 +1,10 @@
+aws_region: us-west-1
+aws_access_key_id: .........
+aws_secret_access_key: ..............
+aws_session_token: ...........
+download_dir: granules
+dapa_api: https://gwaxi7ijl4.execute-api.us-west-2.amazonaws.com/dev
+collection_id: ATMS_SCIENCE_Group___001
+limits: 100
+start_datetime: 2016-01-17T00:00:00Z
+stop_datetime: 2016-01-17T12:00:00Z
