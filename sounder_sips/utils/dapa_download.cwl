@@ -28,6 +28,7 @@ requirements:
           aws_session_token = $(inputs.aws_session_token)
   EnvVarRequirement:
     envDef:
+      UNITY_BEARER_TOKEN: $(inputs.unity_token)
       AWS_REGION: $(inputs.aws_region)
       AWS_ACCESS_KEY_ID: $(inputs.aws_access_key_id)
       AWS_SECRET_ACCESS_KEY: $(inputs.aws_secret_access_key)
@@ -42,6 +43,7 @@ requirements:
       VERIFY_SSL: 'FALSE'
 
 inputs:
+  unity_token: string
   aws_region: string
   aws_access_key_id: string
   aws_secret_access_key: string
@@ -49,7 +51,6 @@ inputs:
   download_dir: string
   dapa_api: string
   collection_id: string
-  limits: int
   start_datetime: string
   stop_datetime: string
 outputs:
