@@ -13,6 +13,7 @@ hints:
       - aws_access_key_id
       - aws_secret_access_key
       - aws_session_token
+      - unity_token
   DockerRequirement:
     dockerPull: lucacinquini/cumulus_unity:1.0.0-t1 
 requirements:
