@@ -35,6 +35,7 @@ inputs:
   aws_secret_access_key: string
   aws_session_token: string
   unity_token: string
+  target_s3_folder: string
 
 outputs:
   stdout_l1b-stage-in:
