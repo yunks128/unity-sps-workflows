@@ -59,7 +59,7 @@ outputs:
     type: stdout
   stderr_file:
     type: stderr
-  target_local_subdir:
+  download_dir:
     type: Directory
     outputBinding:
       glob: "$(inputs.download_dir)"
