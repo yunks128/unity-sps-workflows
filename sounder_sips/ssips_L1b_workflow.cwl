@@ -60,7 +60,7 @@ outputs:
 
 steps:
   l1b-stage-in:
-    run: utils/download_dir_from_s3.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/download_dir_from_s3.cwl
     in:
       source_s3_folder: source_s3_folder
       source_s3_subdir: source_s3_subdir
@@ -75,7 +75,7 @@ steps:
 
   l1b-run-pge:
     # run: run_ssips_L1b_pge.cwl
-    run: l1b_package.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/l1b_package.cwl
     in:
       input_dir: l1b-stage-in/target_local_subdir
       static_dir: static_dir
@@ -85,7 +85,7 @@ steps:
     - stderr_file
 
   l1b-stage-out:
-    run: utils/upload_dir_to_s3.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/upload_dir_to_s3.cwl
     in:
       source_local_subdir: l1b-run-pge/output_dir
       target_s3_folder: target_s3_folder
