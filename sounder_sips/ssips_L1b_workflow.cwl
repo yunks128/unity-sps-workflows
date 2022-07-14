@@ -29,7 +29,6 @@ inputs:
   collection_id: string
   start_datetime: string
   stop_datetime: string
-  static_dir: Directory
   aws_region: string
   aws_access_key_id: string
   aws_secret_access_key: string
@@ -86,7 +85,6 @@ steps:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/l1b_package.cwl
     in:
       input_dir: l1b-stage-in/download_dir
-      static_dir: static_dir
     out:
     - output_dir
     - stdout_file

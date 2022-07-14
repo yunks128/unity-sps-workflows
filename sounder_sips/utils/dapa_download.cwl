@@ -15,7 +15,7 @@ hints:
       - aws_session_token
       - unity_token
   DockerRequirement:
-    dockerPull: lucacinquini/cumulus_unity:1.0.0-t1 
+    dockerPull: ghcr.io/unity-sds/unity-data-services:1.5.14
 requirements:
   InitialWorkDirRequirement:
     listing:
@@ -42,6 +42,8 @@ requirements:
       DATE_FROM: $(inputs.start_datetime)
       DATE_TO: $(inputs.stop_datetime)
       VERIFY_SSL: 'FALSE'
+
+baseCommand: [download]
 
 inputs:
   unity_token: string
