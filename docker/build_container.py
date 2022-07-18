@@ -7,8 +7,8 @@ import requests
 import jsonschema
 
 
-__MOZART_REST_API = "http://localhost:8888/api/v0.1"
-__GRQ_REST_API = "http://localhost:8878/api/v0.1"
+__MOZART_REST_API = "http://mozart:8888/api/v0.1"
+__GRQ_REST_API = "http://grq2:8878/api/v0.1"
 
 
 def build_image(tag):
