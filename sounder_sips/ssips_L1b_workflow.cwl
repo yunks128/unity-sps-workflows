@@ -26,7 +26,8 @@ requirements:
 inputs:
   download_dir: string
   dapa_api: string
-  collection_id: string
+  input_collection_id: string
+  output_collection_id: string
   start_datetime: string
   stop_datetime: string
   aws_region: string
@@ -34,7 +35,8 @@ inputs:
   aws_secret_access_key: string
   aws_session_token: string
   unity_token: string
-  target_s3_folder: string
+  staging_bucket: string
+  provider_id: string
 
 outputs:
   stdout_l1b-stage-in:
@@ -55,12 +57,6 @@ outputs:
   stderr_stage-out:
     type: File
     outputSource: l1b-stage-out/stderr_file
-  output_target_s3_folder:
-    type: string
-    outputSource: l1b-stage-out/target_s3_folder
-  output_target_s3_subdir:
-    type: string
-    outputSource: l1b-stage-out/target_s3_subdir
 
 steps:
   l1b-stage-in:
@@ -68,7 +64,7 @@ steps:
     in:
       download_dir: download_dir
       dapa_api: dapa_api
-      collection_id: collection_id
+      collection_id: input_collection_id
       start_datetime: start_datetime
       stop_datetime: stop_datetime
       unity_token: unity_token
@@ -91,17 +87,19 @@ steps:
     - stderr_file
 
   l1b-stage-out:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/upload_dir_to_s3.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_upload.cwl
     in:
-      source_local_subdir: l1b-run-pge/output_dir
-      target_s3_folder: target_s3_folder
+      upload_dir: l1b-run-pge/output_dir
+      collection_id: output_collection_id
+      provider_id: provider_id
+      dapa_api: dapa_api
+      staging_bucket: staging_bucket
       aws_region: aws_region
       aws_access_key_id: aws_access_key_id
       aws_secret_access_key: aws_secret_access_key
       aws_session_token: aws_session_token
+      unity_token: unity_token
     out:
-    - target_s3_folder
-    - target_s3_subdir
     - stdout_file
     - stderr_file
 
