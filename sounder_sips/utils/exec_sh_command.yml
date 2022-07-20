@@ -1,1 +1,1 @@
-command: ls -l
+commands: [ls, -ltr ]

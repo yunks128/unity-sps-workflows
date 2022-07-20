@@ -8,15 +8,12 @@ requirements:
 
 hints:
   DockerRequirement:
-    dockerPull: alpine:latest
-baseCommand: [sh]
-arguments: [
-  "-c",
-  "$(inputs.command)"
-]
+    dockerPull: ubuntu:latest
+baseCommand: [sh, -c]
+arguments: [$(inputs.commands)] 
 
 inputs: 
-  command: string
+  commands: string[]
 
 outputs:
   stdout_file:
