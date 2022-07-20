@@ -16,6 +16,7 @@ RUN pip3 install cwl-runner
 
 # COPY sounder_sips/ssips_L1b_workflow.cwl /src/ssips_L1b_workflow.cwl
 # COPY sounder_sips/ssips_L1b_workflow.yml /src/ssips_L1b_workflow.yml
+# COPY ./sounder_sips/ /home/ops
 COPY ./sounder_sips/ /src
 
 # ENTRYPOINT ["/home/ops/verdi/bin/cwl-runner"]

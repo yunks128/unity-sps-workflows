@@ -1,9 +1,7 @@
 {
-  "command": "--no-read-only /src/ssips_L1b_workflow.cwl /src/ssips_L1b_workflow.yml",
+  "command": "--no-read-only --no-match-user /src/ssips_L1b_workflow.cwl /src/ssips_L1b_workflow.yml",
   "recommended-queues": [
-    "verdi-job_worker",
-    "factotum-job_worker-small",
-    "factotum-job_worker-large"
+    "verdi-job_worker"
   ],
   "disk_usage": "200MB",
   "soft_time_limit": 900,
