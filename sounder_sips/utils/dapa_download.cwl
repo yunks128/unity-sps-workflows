@@ -15,7 +15,7 @@ hints:
       - aws_session_token
       - unity_token
   DockerRequirement:
-    dockerPull: ghcr.io/unity-sds/unity-data-services:1.5.14
+    dockerPull: ghcr.io/unity-sds/unity-data-services:1.5.15
 requirements:
   InitialWorkDirRequirement:
     listing:
