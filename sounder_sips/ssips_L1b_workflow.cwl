@@ -15,8 +15,9 @@ hints:
       - aws_access_key_id
       - aws_secret_access_key
       - aws_session_token
-      - unity_token
-
+      - username
+      - password
+      - client_id
 requirements:
   SubworkflowFeatureRequirement: {}
   ScatterFeatureRequirement: {}
@@ -34,9 +35,13 @@ inputs:
   aws_access_key_id: string
   aws_secret_access_key: string
   aws_session_token: string
-  unity_token: string
   staging_bucket: string
   provider_id: string
+  username: string
+  password: string
+  password_type: string
+  client_id: string
+  cognito_url: string
 
 outputs:
   stdout_l1b-stage-in:
@@ -60,14 +65,19 @@ outputs:
 
 steps:
   l1b-stage-in:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_download.cwl
+    #run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_download.cwl
+    run: utils/dapa_download.cwl
     in:
       download_dir: download_dir
       dapa_api: dapa_api
       collection_id: input_collection_id
       start_datetime: start_datetime
       stop_datetime: stop_datetime
-      unity_token: unity_token
+      username: username
+      password: password
+      password_type: password_type
+      client_id: client_id
+      cognito_url: cognito_url
       aws_region: aws_region
       aws_access_key_id: aws_access_key_id
       aws_secret_access_key: aws_secret_access_key
@@ -78,7 +88,8 @@ steps:
     - stderr_file
 
   l1b-run-pge:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/l1b_package.cwl
+    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/l1b_package.cwl
+    run: l1b_package.cwl
     in:
       input_dir: l1b-stage-in/download_dir
     out:
@@ -98,8 +109,11 @@ steps:
       aws_access_key_id: aws_access_key_id
       aws_secret_access_key: aws_secret_access_key
       aws_session_token: aws_session_token
-      unity_token: unity_token
+      username: username
+      password: password
+      password_type: password_type
+      client_id: client_id
+      cognito_url: cognito_url
     out:
     - stdout_file
     - stderr_file
-
