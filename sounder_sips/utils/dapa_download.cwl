@@ -13,9 +13,11 @@ hints:
       - aws_access_key_id
       - aws_secret_access_key
       - aws_session_token
-      - unity_token
+      - username
+      - password
+      - client_id
   DockerRequirement:
-    dockerPull: ghcr.io/unity-sds/unity-data-services:1.5.15
+    dockerPull: ghcr.io/unity-sds/unity-data-services:1.6.17
 requirements:
   InitialWorkDirRequirement:
     listing:
@@ -29,7 +31,11 @@ requirements:
           aws_session_token = $(inputs.aws_session_token)
   EnvVarRequirement:
     envDef:
-      UNITY_BEARER_TOKEN: $(inputs.unity_token)
+      USERNAME: $(inputs.username)
+      PASSWORD: $(inputs.password)
+      PASSWORD_TYPE: $(inputs.password_type)
+      CLIENT_ID: $(inputs.client_id)
+      COGNITO_URL: $(inputs.cognito_url)
       AWS_REGION: $(inputs.aws_region)
       AWS_ACCESS_KEY_ID: $(inputs.aws_access_key_id)
       AWS_SECRET_ACCESS_KEY: $(inputs.aws_secret_access_key)
@@ -46,11 +52,15 @@ requirements:
 baseCommand: [download]
 
 inputs:
-  unity_token: string
   aws_region: string
   aws_access_key_id: string
   aws_secret_access_key: string
   aws_session_token: string
+  username: string
+  password: string
+  password_type: string
+  client_id: string
+  cognito_url: string
   download_dir: string
   dapa_api: string
   collection_id: string
@@ -61,10 +71,10 @@ outputs:
     type: stdout
   stderr_file:
     type: stderr
-  download_dir:
-    type: Directory
-    outputBinding:
-      glob: "$(inputs.download_dir)"
+  #download_dir:
+  #  type: Directory
+  #  outputBinding:
+  #    glob: "$(inputs.download_dir)"
 stdout: stdout_dapa_download.txt
 stderr: stderr_dapa_download.txt
 
