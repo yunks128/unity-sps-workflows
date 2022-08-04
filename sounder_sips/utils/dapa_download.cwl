@@ -74,7 +74,7 @@ outputs:
   download_dir:
     type: Directory
     outputBinding:
-  #    glob: "$(inputs.download_dir)"
+      glob: "$(inputs.download_dir)"
 stdout: stdout_dapa_download.txt
 stderr: stderr_dapa_download.txt
 
