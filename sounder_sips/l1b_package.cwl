@@ -51,9 +51,9 @@ $graph:
 
   requirements:
     DockerRequirement:
-      # TODO: use public sounder_sips images
       # dockerPull: unity-sds/sounder_sips_l1b_pge:r0.1.0
-      dockerPull: lucacinquini/sounder_sips_l1b_pge:r0.1.0
+      #dockerPull: lucacinquini/sounder_sips_l1b_pge:r0.1.0
+      dockerPull: public.ecr.aws/unity-ads/sounder_sips_l1b_pge:r0.1.0
   
   arguments: [
     "$(runtime.outdir)/processed_notebook.ipynb",
