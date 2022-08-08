@@ -25,7 +25,6 @@ requirements:
 inputs:
   source_s3_folder: string
   source_s3_subdir: string
-  static_dir: Directory
   target_s3_folder: string
   aws_region: string
   aws_access_key_id: string
@@ -74,11 +73,9 @@ steps:
     - stderr_file
 
   l1b-run-pge:
-    # run: run_ssips_L1b_pge.cwl
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/l1b_package.cwl
     in:
       input_dir: l1b-stage-in/target_local_subdir
-      static_dir: static_dir
     out:
     - output_dir
     - stdout_file
