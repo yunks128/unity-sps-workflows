@@ -1,0 +1,16 @@
+download_dir: granules
+dapa_api: https://k3a3qmarxh.execute-api.us-west-2.amazonaws.com/dev
+collection_id: SNDR_SNPP_ATMS_L1A___1
+staging_bucket: am-uds-dev-cumulus-staging
+provider_id: SNPP
+start_datetime: 2016-01-14T08:00:00Z
+stop_datetime: 2016-01-14T11:59:59Z
+aws_region: us-west-2
+username: ...
+password: ...
+password_type: PLAIN
+client_id: 7a1fglm2d54eoggj13lccivp25
+cognito_url: https://cognito-idp.us-west-2.amazonaws.com
+aws_access_key_id: ...
+aws_secret_access_key: ...
+aws_session_token: ...
