@@ -71,6 +71,8 @@ steps:
       download_dir: download_dir
       dapa_api: dapa_api
       collection_id: input_collection_id
+      # staging_bucket: staging_bucket
+      # provider_id: provider_id
       start_datetime: start_datetime
       stop_datetime: stop_datetime
       username: username
