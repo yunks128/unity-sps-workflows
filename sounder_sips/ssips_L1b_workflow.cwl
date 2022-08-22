@@ -12,9 +12,6 @@ hints:
   "cwltool:Secrets":
     secrets:
       - aws_region
-      - aws_access_key_id
-      - aws_secret_access_key
-      - aws_session_token
       - username
       - password
       - client_id
@@ -32,9 +29,6 @@ inputs:
   start_datetime: string
   stop_datetime: string
   aws_region: string
-  aws_access_key_id: string
-  aws_secret_access_key: string
-  aws_session_token: string
   staging_bucket: string
   provider_id: string
   username: string
@@ -81,9 +75,6 @@ steps:
       client_id: client_id
       cognito_url: cognito_url
       aws_region: aws_region
-      aws_access_key_id: aws_access_key_id
-      aws_secret_access_key: aws_secret_access_key
-      aws_session_token: aws_session_token
     out:
     - download_dir
     - stdout_file
@@ -100,7 +91,8 @@ steps:
     - stderr_file
 
   l1b-stage-out:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_upload.cwl
+    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_upload.cwl
+    run: utils/dapa_upload.cwl
     in:
       upload_dir: l1b-run-pge/output_dir
       collection_id: output_collection_id
@@ -108,9 +100,6 @@ steps:
       dapa_api: dapa_api
       staging_bucket: staging_bucket
       aws_region: aws_region
-      aws_access_key_id: aws_access_key_id
-      aws_secret_access_key: aws_secret_access_key
-      aws_session_token: aws_session_token
       username: username
       password: password
       password_type: password_type

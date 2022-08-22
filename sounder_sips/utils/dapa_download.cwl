@@ -10,9 +10,6 @@ $namespaces:
 hints:
   "cwltool:Secrets":
     secrets:
-      - aws_access_key_id
-      - aws_secret_access_key
-      - aws_session_token
       - username
       - password
       - client_id
@@ -21,14 +18,11 @@ hints:
 requirements:
   InitialWorkDirRequirement:
     listing:
-      - entryname: .aws/credentials
+      - entryname: .aws/config
         entry: |
           [default]
           output = json
           aws_region = $(inputs.aws_region)
-          aws_access_key_id = $(inputs.aws_access_key_id)
-          aws_secret_access_key = $(inputs.aws_secret_access_key)
-          aws_session_token = $(inputs.aws_session_token)
   EnvVarRequirement:
     envDef:
       USERNAME: $(inputs.username)
@@ -37,9 +31,6 @@ requirements:
       CLIENT_ID: $(inputs.client_id)
       COGNITO_URL: $(inputs.cognito_url)
       AWS_REGION: $(inputs.aws_region)
-      AWS_ACCESS_KEY_ID: $(inputs.aws_access_key_id)
-      AWS_SECRET_ACCESS_KEY: $(inputs.aws_secret_access_key)
-      AWS_SESSION_TOKEN: $(inputs.aws_session_token)
       LOG_LEVEL: '20'
       DOWNLOAD_DIR: $(runtime.outdir)/$(inputs.download_dir)
       DAPA_API: $(inputs.dapa_api)
@@ -53,9 +44,6 @@ baseCommand: [download]
 
 inputs:
   aws_region: string
-  aws_access_key_id: string
-  aws_secret_access_key: string
-  aws_session_token: string
   username: string
   password: string
   password_type: string
