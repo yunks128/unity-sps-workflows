@@ -51,7 +51,6 @@ $graph:
 
   requirements:
     DockerRequirement:
-      # dockerPull: lucacinquini/sounder_sips_l1b_pge:r0.1.0
       dockerPull: public.ecr.aws/unity-ads/sounder_sips_l1b_pge:r0.1.0
   
   arguments: [
