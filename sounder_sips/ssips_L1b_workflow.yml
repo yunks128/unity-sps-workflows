@@ -7,7 +7,7 @@ stop_datetime: 2016-01-14T11:59:59Z
 
 upload_dir: 
   class: Directory
-  path: /static_data/SOUNDER_SIPS/L1B_OUTPUT
+  path: /tmp/SOUNDER_SIPS/L1B_OUTPUT
 output_collection_id: SNDR_SNPP_ATMS_L1B_OUTPUT___1
 staging_bucket: uds-test-cumulus-staging
 provider_id: SNPP
