@@ -14,7 +14,7 @@ hints:
       - password
       - client_id
   DockerRequirement:
-    dockerPull: ghcr.io/unity-sds/unity-data-services:1.6.17
+    dockerPull: ghcr.io/unity-sds/unity-data-services:1.6.18
 requirements:
   InitialWorkDirRequirement:
     listing:
@@ -61,6 +61,10 @@ outputs:
     type: stdout
   stderr_file:
     type: stderr
+  uploaded_dir:
+    type: Directory
+    outputBinding:
+      glob: "$(runtime.outdir)/$(inputs.upload_dir.basename)"
 stdout: stdout_dapa_upload.txt
 stderr: stderr_dapa_upload.txt
 
