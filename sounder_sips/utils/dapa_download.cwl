@@ -14,7 +14,7 @@ hints:
       - password
       - client_id
   DockerRequirement:
-    dockerPull: ghcr.io/unity-sds/unity-data-services:1.6.17
+    dockerPull: ghcr.io/unity-sds/unity-data-services:1.6.18
 requirements:
   InitialWorkDirRequirement:
     listing:
