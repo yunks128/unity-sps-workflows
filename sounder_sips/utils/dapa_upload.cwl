@@ -13,23 +13,17 @@ hints:
       - username
       - password
       - client_id
-      - aws_access_key_id
-      - aws_secret_access_key
-      - aws_session_token
   DockerRequirement:
-    dockerPull: ghcr.io/unity-sds/unity-data-services:1.6.17
+    dockerPull: ghcr.io/unity-sds/unity-data-services:1.6.18
 requirements:
   InitialWorkDirRequirement:
     listing:
       - $(inputs.upload_dir)
-      - entryname: .aws/credentials
+      - entryname: .aws/config
         entry: |
           [default]
           output = json
-          region = $(inputs.aws_region)
-          aws_access_key_id = $(inputs.aws_access_key_id)
-          aws_secret_access_key = $(inputs.aws_secret_access_key)
-          aws_session_token = $(inputs.aws_session_token)
+          aws_region = $(inputs.aws_region)
   EnvVarRequirement:
     envDef:
       USERNAME: $(inputs.username)
@@ -51,9 +45,6 @@ baseCommand: [upload]
 
 inputs:
   aws_region: string
-  aws_access_key_id: string
-  aws_secret_access_key: string
-  aws_session_token: string
   username: string
   password: string
   password_type: string
