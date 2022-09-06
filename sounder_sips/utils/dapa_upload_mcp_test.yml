@@ -1,16 +1,16 @@
 upload_dir: 
   class: Directory
-  path: /Users/cinquini/data/SOUNDER_SIPS/L1B_OUTPUT
+  path: /Users/cinquini/data/SOUNDER_SIPS/L1B_OUTPUT_SMALL
 dapa_api: https://58nbcawrvb.execute-api.us-west-2.amazonaws.com/test
 collection_id: SNDR_SNPP_ATMS_L1B_OUTPUT___1
 staging_bucket: uds-test-cumulus-staging
 provider_id: SNPP
 aws_region: us-west-2
-username: ...
-password: ...
+username: cinquini
+password: Luka@MCP1966!
 password_type: PLAIN
 client_id: 6ir9qveln397i0inh9pmsabq1
 cognito_url: https://cognito-idp.us-west-2.amazonaws.com
-aws_access_key_id: ...
-aws_secret_access_key: ...
-aws_session_token: ...
+aws_access_key_id: ASIAWHJXNLD7M67AIS76
+aws_secret_access_key: 4vXzAf+KeRDiqdD9QxAAGElYx75cjywHGA5Tcida
+aws_session_token: FwoGZXIvYXdzEHgaDGXSez53v12XkHVY+CKsAUcKhsZD/F92+HRtjsu3W3UuBWpUi4i7K4qiCXCBdORJJ6VdrSkusUKf6COZO9xHs/AcOJPd2OK/CzChHaq5nIykmxbIDOCsizkKGgiQYjQH6iJtNijpz9FWfZQUZuc99DpKKavgROJHhzfgc5RCgNGHkkWSuE9jVebo2MtnXiTrIkYNDzjN6XL21gV2jnOXtvaztj6eZskAx5KMqmXYYvmkacCUA/y0bjdCjEcotb/dmAYyLYzmyiL+0QP480xnnvps53e2jeIOg4CFZY9zEtZ/SsKaBmGcTqnKcw4crWXKkw==
