@@ -14,7 +14,7 @@ provider_id: SNPP
 
 username: usps_username
 password: usps_password
-password_type: PARM_STORE
+password_type: PARAM_STORE
 client_id: 71g0c73jl77gsqhtlfg2ht388c
 cognito_url: https://cognito-idp.us-west-2.amazonaws.com
 
