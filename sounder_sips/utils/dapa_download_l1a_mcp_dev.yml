@@ -1,0 +1,13 @@
+dapa_api: https://1gp9st60gd.execute-api.us-west-2.amazonaws.com/dev
+collection_id: L0_SNPP_EphAtt___1
+download_dir: ephatt
+staging_bucket: uds-dev-cumulus-sps
+provider_id: SNPP
+start_datetime: 2016-01-14T11:42:00.000Z
+stop_datetime: 2016-01-14T11:54:00:000Z
+aws_region: us-west-2
+username: usps_username
+password: usps_password
+password_type: PARAM_STORE
+client_id: 71g0c73jl77gsqhtlfg2ht388c
+cognito_url: https://cognito-idp.us-west-2.amazonaws.com
