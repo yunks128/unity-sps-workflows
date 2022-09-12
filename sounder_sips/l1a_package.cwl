@@ -20,10 +20,14 @@ $graph:
   - class: ScatterFeatureRequirement
 
   inputs:
-    input_dir:
+    input_ephatt_dir:
       type: Directory
-      label: L0 Data Directory
-      doc: Directory containing L0 files
+      label: L0 SNPP_EphAtt Data Directory
+      doc: Directory containing L0 emphemeris and attitude files
+    input_science_dir:
+      type: Directory
+      label: L0 ATMS Science Data Directory
+      doc: Directory containing L0 science packet files
     static_dir:
       type: Directory
       label: Static Inputs
@@ -41,7 +45,8 @@ $graph:
     l1a_process:
       run: "#l1a_pge"
       in:
-        input_dir: input_dir
+        input_ephatt_dir: input_ephatt_dir
+        input_science_dir: input_science_dir
         static_dir: static_dir
         start_datetime: start_datetime
         end_datetime: end_datetime
@@ -66,12 +71,12 @@ $graph:
 
   requirements:
     DockerRequirement:
-      # dockerPull: unity-sds/sounder_sips_l1a_pge:r0.1.0
-      dockerPull: public.ecr.aws/unity-ads/sounder_sips_l1a_pge:r0.1.0
+      dockerPull: public.ecr.aws/unity-ads/sounder_sips_l1a_pge:r0.2.0
   
   arguments: [
     "$(runtime.outdir)/processed_notebook.ipynb",
-    "-p", "input_path", "$(inputs.input_dir)",
+    "-p", "input_ephatt_path", "$(inputs.input_ephatt_dir)",
+    "-p", "input_science_path", "$(inputs.input_science_dir)",
     "-p", "output_path", "$(runtime.outdir)",
     "-p", "data_static_path", "$(inputs.static_dir)",
     "-p", "start_datetime", "$(inputs.start_datetime)",
@@ -79,7 +84,9 @@ $graph:
   ]
   
   inputs:
-    input_dir:
+    input_ephatt_dir:
+      type: Directory
+    input_science_dir:
       type: Directory
     static_dir:
       type: Directory
