@@ -1,11 +1,11 @@
 input_ephatt_dir:
   class: Directory
-  path: /home/ops/SOUNDER_SIPS/L1A_INPUT/ephatt
+  path: /Users/cinquini/data/SOUNDER_SIPS/L1A_INPUT/ephatt
 input_science_dir:
   class: Directory
-  path: /home/ops/SOUNDER_SIPS/L1A_INPUT/atms_science
+  path: /Users/cinquini/data/SOUNDER_SIPS/L1A_INPUT/atms_science
 static_dir:
   class: Directory
-  path: /home/ops/SOUNDER_SIPS/STATIC_DATA
+  path: /Users/cinquini/data/SOUNDER_SIPS/STATIC_DATA
 start_datetime: "2016-01-14T11:42:00.000Z"
 end_datetime: "2016-01-14T11:54:00:000Z"
