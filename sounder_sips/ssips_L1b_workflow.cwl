@@ -50,6 +50,9 @@ outputs:
   stderr_l1b-run-pge:
     type: File
     outputSource: l1b-run-pge/stderr_file
+  output_dir:
+    type: Directory
+    outputSource: l1b-run-pge/output_dir
   stdout_stage-out:
     type: File
     outputSource: l1b-stage-out/stdout_file
