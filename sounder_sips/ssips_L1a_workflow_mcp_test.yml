@@ -17,4 +17,3 @@ password_type: PARAM_STORE
 client_id: 6ir9qveln397i0inh9pmsabq1
 cognito_url: https://cognito-idp.us-west-2.amazonaws.com
 staging_bucket: uds-test-cumulus-staging
-provider_id: SNPP
