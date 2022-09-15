@@ -31,6 +31,7 @@ inputs:
   
   ephatt_download_dir: string
   science_download_dir: string
+  staging_bucket: string
   
   dapa_api: string
   username: string
@@ -119,6 +120,24 @@ steps:
       end_datetime: stop_datetime
     out:
     - output_dir
+    - stdout_file
+    - stderr_file
+    
+  l1a-stage-out:
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_upload.cwl
+    in:
+      upload_dir: l1a-run-pge/output_dir
+      collection_id: output_collection_id
+      provider_id: provider_id
+      dapa_api: dapa_api
+      staging_bucket: staging_bucket
+      aws_region: aws_region
+      username: username
+      password: password
+      password_type: password_type
+      client_id: client_id
+      cognito_url: cognito_url
+    out:
     - stdout_file
     - stderr_file
     
