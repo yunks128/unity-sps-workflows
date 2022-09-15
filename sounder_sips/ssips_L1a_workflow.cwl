@@ -62,7 +62,7 @@ steps:
       dapa_api: dapa_api
       collection_id: input_ephatt_collection_id
       start_datetime: start_datetime
-      stop_datetime: end_datetime
+      stop_datetime: stop_datetime
       username: username
       password: password
       password_type: password_type
@@ -80,7 +80,7 @@ steps:
       dapa_api: dapa_api
       collection_id: input_science_collection_id
       start_datetime: start_datetime
-      stop_datetime: end_datetime
+      stop_datetime: stop_datetime
       username: username
       password: password
       password_type: password_type
