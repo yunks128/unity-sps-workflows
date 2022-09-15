@@ -1,8 +1,10 @@
 upload_dir:
   class: Directory
-  path: /tmp/SOUNDER_SIPS/L1B_OUTPUT
+  # path: /tmp/SOUNDER_SIPS/L1B_OUTPUT
+  path: /home/ops/unity-sps-workflows/sounder_sips/6jcqeoq6/
 dapa_api: https://58nbcawrvb.execute-api.us-west-2.amazonaws.com/test
-collection_id: SNDR_SNPP_ATMS_L1B_OUTPUT___1
+# collection_id: SNDR_SNPP_ATMS_L1B_OUTPUT___1
+collection_id: SNDR_SNPP_ATMS_L1A_OUTPUT___1
 staging_bucket: uds-test-cumulus-staging
 provider_id: SNPP
 aws_region: us-west-2
