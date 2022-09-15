@@ -32,6 +32,7 @@ inputs:
   ephatt_download_dir: string
   science_download_dir: string
   staging_bucket: string
+  provider_id: string
   
   dapa_api: string
   username: string
