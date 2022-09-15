@@ -70,6 +70,12 @@ outputs:
   output_dir:
     type: Directory
     outputSource: l1a-run-pge/output_dir
+  stdout_stage-out:
+    type: File
+    outputSource: l1a-stage-out/stdout_file
+  stderr_stage-out:
+    type: File
+    outputSource: l1a-stage-out/stderr_file
 
 steps:
 
