@@ -29,7 +29,8 @@ inputs:
   start_datetime: string
   stop_datetime: string
   
-  download_dir: string
+  ephatt_download_dir: string
+  science_download_dir: string
   
   dapa_api: string
   username: string
@@ -57,7 +58,7 @@ steps:
   l1a-stage-in-1:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_download.cwl
     in:
-      download_dir: download_dir
+      download_dir: ephatt_download_dir
       dapa_api: dapa_api
       collection_id: input_ephatt_collection_id
       start_datetime: start_datetime
@@ -75,7 +76,7 @@ steps:
   l1a-stage-in-2:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_download.cwl
     in:
-      download_dir: download_dir
+      download_dir: science_download_dir
       dapa_api: dapa_api
       collection_id: input_science_collection_id
       start_datetime: start_datetime

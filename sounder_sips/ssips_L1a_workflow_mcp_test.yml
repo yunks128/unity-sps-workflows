@@ -1,0 +1,17 @@
+static_dir:
+  class: Directory
+  path: /tmp/SOUNDER_SIPS/STATIC_DATA
+dapa_api: https://58nbcawrvb.execute-api.us-west-2.amazonaws.com/test
+input_science_collection_id: L0_SNPP_ATMS_SCIENCE___1
+input_ephatt_collection_id: L0_SNPP_EphAtt___1
+ephatt_download_dir: ephatt
+science_download_dir: atms_science
+provider_id: SNPP
+start_datetime: 2016-01-14T08:00:00Z
+stop_datetime: 2016-01-14T11:59:59Z
+aws_region: us-west-2
+username: usps_username
+password: usps_password
+password_type: PARAM_STORE
+client_id: 6ir9qveln397i0inh9pmsabq1
+cognito_url: https://cognito-idp.us-west-2.amazonaws.com
