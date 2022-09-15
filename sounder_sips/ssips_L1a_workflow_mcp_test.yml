@@ -4,6 +4,7 @@ static_dir:
 dapa_api: https://58nbcawrvb.execute-api.us-west-2.amazonaws.com/test
 input_science_collection_id: L0_SNPP_ATMS_SCIENCE___1
 input_ephatt_collection_id: L0_SNPP_EphAtt___1
+output_collection_id: SNDR_SNPP_ATMS_L1A_OUTPUT___1
 ephatt_download_dir: ephatt
 science_download_dir: atms_science
 provider_id: SNPP
