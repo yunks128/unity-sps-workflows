@@ -47,12 +47,18 @@ outputs:
   stderr_stage-in-1:
     type: File
     outputSource: l1a-stage-in-1/stderr_file
+  ephatt_downloaded_dir:
+    type: Directory
+    outputSource: l1a-stage-in-1/output_dir
   #stdout_stage-in-2:
   #  type: File
   #  outputSource: l1a-stage-in-2/stdout_file
   #stderr_stage-in-2:
   ##  type: File
   #  outputSource: l1a-stage-in-2/stderr_file
+  science_downloaded_dir:
+    type: Directory
+    outputSource: l1a-stage-in-2/output_dir
 
 steps:
   l1a-stage-in-1:
