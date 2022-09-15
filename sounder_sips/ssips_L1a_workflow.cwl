@@ -59,8 +59,18 @@ outputs:
   science_downloaded_dir:
     type: Directory
     outputSource: l1a-stage-in-2/download_dir
+  stdout_run-pge:
+    type: File
+    outputSource: l1a-run-pge/stdout_file
+  stderr_run-pge:
+    type: File
+    outputSource: l1a-run-pge/stderr_file
+  output_dir:
+    type: Directory
+    outputSource: l1a-run-pge/output_dir
 
 steps:
+
   l1a-stage-in-1:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_download.cwl
     in:
@@ -79,6 +89,7 @@ steps:
     - download_dir
     - stdout_file
     - stderr_file
+    
   l1a-stage-in-2:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_download.cwl
     in:
@@ -95,6 +106,19 @@ steps:
       aws_region: aws_region
     out:
     - download_dir
+    - stdout_file
+    - stderr_file
+    
+  l1a-run-pge:
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/l1a_package.cwl
+    in:
+      input_ephatt_dir: l1a-stage-in-1/download_dir
+      input_science_dir: l1a-stage-in-2/download_dir
+      static_dir: static_dir
+      start_datetime: start_datetime
+      end_datetime: stop_datetime
+    out:
+    - output_dir
     - stdout_file
     - stderr_file
     
