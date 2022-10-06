@@ -31,9 +31,15 @@ inputs:
   aws_region: string
   staging_bucket: string
   provider_id: string
-  username: string
-  password: string
-  password_type: string
+  username: 
+  	type: string
+  	default: usps_username
+  password: 
+  	type: string
+  	default: usps_password
+  password_type: 
+  	type: string
+  	default: PARAM_STORE
   client_id: string
   cognito_url: string
 
