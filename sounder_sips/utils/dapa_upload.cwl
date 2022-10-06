@@ -44,18 +44,32 @@ requirements:
 baseCommand: [upload]
 
 inputs:
-  aws_region: string
-  username: string
-  password: string
-  password_type: string
-  client_id: string
-  cognito_url: string
-  upload_dir:
-     type: Directory
-  dapa_api: string
+ 
   collection_id: string
   provider_id: string
+  upload_dir:
+     type: Directory
+     
+  client_id: string
+  dapa_api: string
   staging_bucket: string
+  
+  aws_region:
+    type: string
+    default: us-west-2
+  username: 
+    type: string
+    default: usps_username
+  password: 
+    type: string
+    default: usps_password
+  password_type: 
+    type: string
+    default: PARAM_STORE
+  cognito_url:
+    type: string
+    default: https://cognito-idp.us-west-2.amazonaws.com
+    
 outputs:
   stdout_file:
     type: stdout

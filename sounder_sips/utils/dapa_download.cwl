@@ -43,17 +43,31 @@ requirements:
 baseCommand: [download]
 
 inputs:
-  aws_region: string
-  username: string
-  password: string
-  password_type: string
-  client_id: string
-  cognito_url: string
-  download_dir: string
-  dapa_api: string
+
   collection_id: string
   start_datetime: string
   stop_datetime: string
+  download_dir: string
+  
+  dapa_api: string
+  client_id: string
+  
+  aws_region:
+    type: string
+    default: us-west-2
+  username: 
+    type: string
+    default: usps_username
+  password: 
+    type: string
+    default: usps_password
+  password_type: 
+    type: string
+    default: PARAM_STORE
+  cognito_url:
+    type: string
+    default: https://cognito-idp.us-west-2.amazonaws.com
+  
 outputs:
   stdout_file:
     type: stdout
