@@ -2,6 +2,7 @@ collection_id: SNDR_SNPP_ATMS_L1A___1
 provider_id: SNPP
 start_datetime: 2016-01-14T08:00:00Z
 stop_datetime: 2016-01-14T11:59:59Z
+download_dir: granules
 
 staging_bucket: uds-dev-cumulus-sps
 dapa_api: https://1gp9st60gd.execute-api.us-west-2.amazonaws.com/dev
