@@ -22,15 +22,25 @@ requirements:
   StepInputExpressionRequirement: {}
 
 inputs:
-  download_dir: string
-  dapa_api: string
+
+  # job specific parameters
   input_collection_id: string
   output_collection_id: string
   start_datetime: string
   stop_datetime: string
-  aws_region: string
+  
+  # venue dependent parameters
+  dapa_api: string
   staging_bucket: string
-  provider_id: string
+  client_id: string
+  
+  # fixed parameters
+  aws_region:
+    type: string
+    default: us-west-2
+  provider_id:
+    type: string
+    default: SNPP
   username: 
     type: string
     default: usps_username
@@ -40,8 +50,12 @@ inputs:
   password_type: 
     type: string
     default: PARAM_STORE
-  client_id: string
-  cognito_url: string
+  cognito_url:
+    type: string
+    default: https://cognito-idp.us-west-2.amazonaws.com
+  download_dir:
+    type: string
+    default: granules
 
 outputs:
   stdout_l1b-stage-in:
