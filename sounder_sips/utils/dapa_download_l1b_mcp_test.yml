@@ -6,8 +6,8 @@ provider_id: SNPP
 start_datetime: 2016-01-14T08:00:00Z
 stop_datetime: 2016-01-14T11:59:59Z
 aws_region: us-west-2
-username: ...
-password: ...
-password_type: PLAIN
+username: usps_username
+password: usps_password
+password_type: PARAM_STORE
 client_id: 6ir9qveln397i0inh9pmsabq1
 cognito_url: https://cognito-idp.us-west-2.amazonaws.com
