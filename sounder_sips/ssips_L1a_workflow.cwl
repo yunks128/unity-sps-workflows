@@ -22,6 +22,8 @@ requirements:
   StepInputExpressionRequirement: {}
 
 inputs: 
+
+  # job specific parameters
   input_ephatt_collection_id: string
   input_science_collection_id: string
   output_collection_id: string
@@ -29,18 +31,35 @@ inputs:
   start_datetime: string
   stop_datetime: string
   
-  ephatt_download_dir: string
-  science_download_dir: string
-  staging_bucket: string
-  provider_id: string
+  ephatt_download_dir:
+    type: string
+    default: ephatt
+  science_download_dir:
+    type: string
+    default: atms_science
   
+  # venue dependent parameters
+  staging_bucket: string
   dapa_api: string
-  username: string
-  password: string
-  password_type: string
   client_id: string
+  
+  # fixed parameters
+  provider_id:
+    type: string
+    default: SNPP
+  username:
+    type: string
+    default: usps_username
+  password:
+    type: string
+    default: usps_password
+  password_type:
+    type: string
+    default: PARAM_STORE
   cognito_url: string
-  aws_region: string
+  aws_region:
+    type: string
+    default: us-west-2
 
 outputs:
   stdout_stage-in-1:
