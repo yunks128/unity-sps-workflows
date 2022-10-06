@@ -32,14 +32,14 @@ inputs:
   staging_bucket: string
   provider_id: string
   username: 
-  	type: string
-  	default: usps_username
+    type: string
+    default: usps_username
   password: 
-  	type: string
-  	default: usps_password
+    type: string
+    default: usps_password
   password_type: 
-  	type: string
-  	default: PARAM_STORE
+    type: string
+    default: PARAM_STORE
   client_id: string
   cognito_url: string
 
