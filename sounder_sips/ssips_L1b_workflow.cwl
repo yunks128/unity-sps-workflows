@@ -103,7 +103,6 @@ steps:
     - stderr_file
 
   l1b-run-pge:
-    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/l1b_package.cwl
     run: https://raw.githubusercontent.com/unity-sds/sounder-sips-application/main/cwl/l1b_package.cwl
     in:
       input_dir: l1b-stage-in/download_dir
