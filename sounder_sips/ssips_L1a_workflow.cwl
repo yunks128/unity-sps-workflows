@@ -56,7 +56,9 @@ inputs:
   password_type:
     type: string
     default: PARAM_STORE
-  cognito_url: string
+  cognito_url: 
+    type: string
+    default: https://cognito-idp.us-west-2.amazonaws.com
   aws_region:
     type: string
     default: us-west-2
@@ -118,7 +120,7 @@ steps:
     - stderr_file
     
   l1a-stage-in-2:
-    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-application/main/cwl/l1a_package.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_download.cwl
     in:
       download_dir: science_download_dir
       dapa_api: dapa_api
@@ -137,7 +139,7 @@ steps:
     - stderr_file
     
   l1a-run-pge:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/l1a_package.cwl
+    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-application/main/cwl/l1a_package.cwl
     in:
       input_ephatt_dir: l1a-stage-in-1/download_dir
       input_science_dir: l1a-stage-in-2/download_dir
