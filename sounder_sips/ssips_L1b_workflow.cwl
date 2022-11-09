@@ -103,7 +103,8 @@ steps:
     - stderr_file
 
   l1b-run-pge:
-    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-application/main/cwl/l1b_package.cwl
+    # run: https://raw.githubusercontent.com/unity-sds/sounder-sips-application/main/cwl/l1b_package.cwl
+    run: http://uads-test-dockstore-deploy-lb-1762603872.us-west-2.elb.amazonaws.com:9998/api/ga4gh/trs/v2/tools/%23workflow%2Fgithub.com%2Fnlahaye%2Fsounder-sips-application%2Fsounder_sips_l1b/versions/main/PLAIN-CWL/descriptor/%2Fcwl%2Fl1b_workflow.cwl
     in:
       input_dir: l1b-stage-in/download_dir
     out:
