@@ -120,7 +120,7 @@ steps:
     - stderr_file
     
   l1a-stage-in-2:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/dapa_download.cwl
+    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-application/main/cwl/l1a_workflow.cwl
     in:
       download_dir: science_download_dir
       dapa_api: dapa_api
