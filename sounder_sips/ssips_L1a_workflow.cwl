@@ -88,7 +88,9 @@ outputs:
 steps:
 
   l1a-stage-in-1:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_download.cwl
+    # FIXME
+    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_download.cwl
+    run: utils/dapa_download.cwl
     in:
       download_dir: ephatt_download_dir
       dapa_api: dapa_api
@@ -103,7 +105,9 @@ steps:
     - stderr_file
     
   l1a-stage-in-2:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_download.cwl
+    # FIXME
+    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_download.cwl
+    run: utils/dapa_download.cwl
     in:
       download_dir: science_download_dir
       dapa_api: dapa_api
@@ -131,7 +135,9 @@ steps:
     - stderr_file
     
   l1a-stage-out:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_upload.cwl
+    # FIXME
+    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_upload.cwl
+    run: utils/dapa_upload.cwl
     in:
       upload_dir: l1a-run-pge/output_dir
       collection_id: output_collection_id
