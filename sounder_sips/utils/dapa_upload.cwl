@@ -11,7 +11,6 @@ hints:
   "cwltool:Secrets":
     secrets:
       - jwt_token
-      - client_id
   DockerRequirement:
     dockerPull: ghcr.io/unity-sds/unity-data-services:1.10.1
 requirements:
@@ -26,7 +25,6 @@ requirements:
   EnvVarRequirement:
     envDef:
       UNITY_BEARER_TOKEN: $(inputs.jwt_token)
-      CLIENT_ID: $(inputs.client_id)
       AWS_REGION: $(inputs.aws_region)
       LOG_LEVEL: '20'
       UPLOAD_DIR: $(runtime.outdir)/$(inputs.upload_dir.basename)
@@ -47,7 +45,6 @@ inputs:
      type: Directory
      
   jwt_token: string
-  client_id: string
   dapa_api: string
   staging_bucket: string
   

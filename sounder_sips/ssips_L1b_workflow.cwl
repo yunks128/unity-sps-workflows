@@ -12,7 +12,6 @@ hints:
   "cwltool:Secrets":
     secrets:
       - aws_region
-      - client_id
 requirements:
   SubworkflowFeatureRequirement: {}
   ScatterFeatureRequirement: {}
@@ -30,7 +29,6 @@ inputs:
   # venue dependent parameters
   dapa_api: string
   staging_bucket: string
-  client_id: string
   
   # fixed parameters
   aws_region:
@@ -82,7 +80,6 @@ steps:
       start_datetime: start_datetime
       stop_datetime: stop_datetime
       jwt_token: jwt_token
-      client_id: client_id
       aws_region: aws_region
     out:
     - download_dir
@@ -111,7 +108,6 @@ steps:
       staging_bucket: staging_bucket
       aws_region: aws_region
       jwt_token: jwt_token
-      client_id: client_id
     out:
     - stdout_file
     - stderr_file

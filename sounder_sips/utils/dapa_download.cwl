@@ -11,7 +11,6 @@ hints:
   "cwltool:Secrets":
     secrets:
       - jwt_token
-      - client_id
   DockerRequirement:
     dockerPull: ghcr.io/unity-sds/unity-data-services:1.10.1
 requirements:
@@ -46,7 +45,6 @@ inputs:
   
   jwt_token: string
   dapa_api: string
-  client_id: string
   
   aws_region:
     type: string
