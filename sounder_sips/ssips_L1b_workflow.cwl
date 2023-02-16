@@ -12,8 +12,6 @@ hints:
   "cwltool:Secrets":
     secrets:
       - aws_region
-      - username
-      - password
       - client_id
 requirements:
   SubworkflowFeatureRequirement: {}
@@ -41,18 +39,8 @@ inputs:
   provider_id:
     type: string
     default: SNPP
-  username: 
+  jwt_token:
     type: string
-    default: usps_username
-  password: 
-    type: string
-    default: usps_password
-  password_type: 
-    type: string
-    default: PARAM_STORE
-  cognito_url:
-    type: string
-    default: https://cognito-idp.us-west-2.amazonaws.com
   download_dir:
     type: string
     default: granules
@@ -82,7 +70,9 @@ outputs:
 
 steps:
   l1b-stage-in:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_download.cwl
+    # FIXME
+    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_download.cwl
+    run: utils/dapa_download.cwl
     in:
       download_dir: download_dir
       dapa_api: dapa_api
@@ -91,11 +81,8 @@ steps:
       # provider_id: provider_id
       start_datetime: start_datetime
       stop_datetime: stop_datetime
-      username: username
-      password: password
-      password_type: password_type
+      jwt_token: jwt_token
       client_id: client_id
-      cognito_url: cognito_url
       aws_region: aws_region
     out:
     - download_dir
@@ -113,7 +100,9 @@ steps:
     - stderr_file
 
   l1b-stage-out:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_upload.cwl
+    # FIXME
+    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_upload.cwl
+    run: utils/dapa_upload.cwl
     in:
       upload_dir: l1b-run-pge/output_dir
       collection_id: output_collection_id
@@ -121,11 +110,8 @@ steps:
       dapa_api: dapa_api
       staging_bucket: staging_bucket
       aws_region: aws_region
-      username: username
-      password: password
-      password_type: password_type
+      jwt_token: jwt_token
       client_id: client_id
-      cognito_url: cognito_url
     out:
     - stdout_file
     - stderr_file

@@ -10,8 +10,7 @@ $namespaces:
 hints:
   "cwltool:Secrets":
     secrets:
-      - username
-      - password
+      - jwt_token
       - client_id
   DockerRequirement:
     dockerPull: ghcr.io/unity-sds/unity-data-services:1.10.1
@@ -25,11 +24,7 @@ requirements:
           aws_region = $(inputs.aws_region)
   EnvVarRequirement:
     envDef:
-      USERNAME: $(inputs.username)
-      PASSWORD: $(inputs.password)
-      PASSWORD_TYPE: $(inputs.password_type)
-      CLIENT_ID: $(inputs.client_id)
-      COGNITO_URL: $(inputs.cognito_url)
+      UNITY_BEARER_TOKEN: $(inputs.jwt_token)
       AWS_REGION: $(inputs.aws_region)
       LOG_LEVEL: '20'
       DOWNLOAD_DIR: $(runtime.outdir)/$(inputs.download_dir)
@@ -49,24 +44,13 @@ inputs:
   stop_datetime: string
   download_dir: string
   
+  jwt_token: string
   dapa_api: string
   client_id: string
   
   aws_region:
     type: string
     default: us-west-2
-  username: 
-    type: string
-    default: usps_username
-  password: 
-    type: string
-    default: usps_password
-  password_type: 
-    type: string
-    default: PARAM_STORE
-  cognito_url:
-    type: string
-    default: https://cognito-idp.us-west-2.amazonaws.com
   
 outputs:
   stdout_file:
@@ -79,4 +63,3 @@ outputs:
       glob: "$(inputs.download_dir)"
 stdout: stdout_dapa_download.txt
 stderr: stderr_dapa_download.txt
-
