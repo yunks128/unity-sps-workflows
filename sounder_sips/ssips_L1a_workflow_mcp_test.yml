@@ -1,3 +1,4 @@
+# job parameters
 static_dir:
   class: Directory
   path: /tmp/SOUNDER_SIPS/STATIC_DATA
@@ -7,6 +8,9 @@ output_collection_id: SNDR_SNPP_ATMS_L1A_OUTPUT___1
 start_datetime: 2016-01-14T08:00:00Z
 stop_datetime: 2016-01-14T11:59:59Z
 
+# venue dependent parameters
 staging_bucket: uds-test-cumulus-staging
 dapa_api: https://58nbcawrvb.execute-api.us-west-2.amazonaws.com/test
 
+# user authentication
+jwt_token: <insert valid JWT token here>

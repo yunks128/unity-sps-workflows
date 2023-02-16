@@ -11,9 +11,7 @@ $namespaces:
 hints:
   "cwltool:Secrets":
     secrets:
-      - username
-      - password
-      - client_id
+      - jwt_token
 
 requirements:
   SubworkflowFeatureRequirement: {}
@@ -41,24 +39,13 @@ inputs:
   # venue dependent parameters
   staging_bucket: string
   dapa_api: string
-  client_id: string
   
   # fixed parameters
   provider_id:
     type: string
     default: SNPP
-  username:
+  jwt_token:
     type: string
-    default: usps_username
-  password:
-    type: string
-    default: usps_password
-  password_type:
-    type: string
-    default: PARAM_STORE
-  cognito_url: 
-    type: string
-    default: https://cognito-idp.us-west-2.amazonaws.com
   aws_region:
     type: string
     default: us-west-2
@@ -108,11 +95,7 @@ steps:
       collection_id: input_ephatt_collection_id
       start_datetime: start_datetime
       stop_datetime: stop_datetime
-      username: username
-      password: password
-      password_type: password_type
-      client_id: client_id
-      cognito_url: cognito_url
+      jwt_token: jwt_token
       aws_region: aws_region
     out:
     - download_dir
@@ -127,11 +110,7 @@ steps:
       collection_id: input_science_collection_id
       start_datetime: start_datetime
       stop_datetime: stop_datetime
-      username: username
-      password: password
-      password_type: password_type
-      client_id: client_id
-      cognito_url: cognito_url
+      jwt_token: jwt_token
       aws_region: aws_region
     out:
     - download_dir
@@ -160,11 +139,7 @@ steps:
       dapa_api: dapa_api
       staging_bucket: staging_bucket
       aws_region: aws_region
-      username: username
-      password: password
-      password_type: password_type
-      client_id: client_id
-      cognito_url: cognito_url
+      jwt_token: jwt_token
     out:
     - stdout_file
     - stderr_file

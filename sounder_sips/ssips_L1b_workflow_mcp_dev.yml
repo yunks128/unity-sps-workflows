@@ -1,8 +1,12 @@
+# job parameters
 input_collection_id: SNDR_SNPP_ATMS_L1A___1
 start_datetime: 2016-01-14T08:00:00Z
 stop_datetime: 2016-01-14T11:59:59Z
 output_collection_id: SNDR_SNPP_ATMS_L1B_OUTPUT___1
 
+# venue dependent parameters
 staging_bucket: uds-dev-cumulus-staging
-client_id: 71g0c73jl77gsqhtlfg2ht388c
 dapa_api: https://1gp9st60gd.execute-api.us-west-2.amazonaws.com/dev
+
+# user authentication
+jwt_token: <insert valid JWT token here>
