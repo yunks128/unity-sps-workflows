@@ -1,0 +1,3 @@
+/tmp/granule1.txt
+/tmp/granule2.txt
+/tmp/granule3.txt
