@@ -5,11 +5,8 @@ class: CommandLineTool
 
 hints:
   DockerRequirement:
-    dockerPull: ghcr.io/unity-sds/unity-sps-prototype/chirp-rebinning:unity-v0.1
-#requirements:
-#  InitialWorkDirRequirement:
-#    listing:
-#      - $(inputs.script)
+    dockerPull: python:latest
+baseCommand: python
 
 inputs:
   script:
