@@ -5,17 +5,10 @@ class: CommandLineTool
 
 hints:
   DockerRequirement:
-    dockerPull: python:latest
-baseCommand: python
+    dockerPull: ghcr.io/unity-sds/unity-sps-prototype/chirp-rebinning:unity-v0.1
+baseCommand: ["/usr/app/chirp-rebinning.py"]
 
 inputs:
-  script:
-    type: File
-    default:
-      class: File
-      path: chirp-rebinning.py
-    inputBinding:
-      position: 0
   granules:
     type: File
     inputBinding:
