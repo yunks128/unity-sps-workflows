@@ -13,8 +13,11 @@ requirements:
   StepInputExpressionRequirement: {}
 
 inputs:
-  granules:
-    type: File
+  input_cmr_collection_name: string
+  input_cmr_search_start_time: string
+  input_cmr_search_stop_time: string
+  input_cmr_edl_user: string
+  input_cmr_edl_pass: string
 
 outputs:
   products:
@@ -23,10 +26,20 @@ outputs:
 
 steps:
 
+  cmr-step:
+    run: cmr-tool-wrapper.cwl
+    in:
+      cmr_collection: input_cmr_collection_name
+      cmr_start_time: input_cmr_search_start_time
+      cmr_stop_time: input_cmr_search_stop_time
+      cmr_edl_user: input_cmr_edl_user
+      cmr_edl_pass: input_cmr_edl_pass
+    out:
+    - results
+
   chirp-rebinning:
     run: chirp-rebinning.cwl
     in:
-      granules: granules
-      
+      granules: cmr-step/results
     out:
     - products
