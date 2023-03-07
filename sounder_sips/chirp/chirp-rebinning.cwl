@@ -2,11 +2,15 @@
 
 cwlVersion: v1.2
 class: CommandLineTool
-baseCommand: python
-requirements:
-  InitialWorkDirRequirement:
-    listing:
-      - $(inputs.script)
+
+hints:
+  DockerRequirement:
+    dockerPull: ghcr.io/unity-sds/unity-sps-prototype/chirp-rebinning:unity-v0.1
+#requirements:
+#  InitialWorkDirRequirement:
+#    listing:
+#      - $(inputs.script)
+
 inputs:
   script:
     type: File
@@ -20,6 +24,7 @@ inputs:
     inputBinding:
       position: 1
       prefix: -g
+
 outputs:
   products:
     type: File
