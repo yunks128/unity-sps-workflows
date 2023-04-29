@@ -16,6 +16,15 @@ requirements:
 ## Inputs to the CHIRP e2e workflow
 inputs:
 
+  # publish_job parameters
+  job_id: string
+  job_status:
+    type: string
+    default: "submitted"
+  job_inputs:
+    type: string
+    default: "none"
+
   # Generic inputs
   input_processing_labels: string[]
 
@@ -39,6 +48,14 @@ inputs:
 outputs: []
 
 steps:
+  create_job:
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    in:
+      job_id: job_id
+      job_status:  job_status
+      job_inputs: job_inputs
+    out: []
+
   workflow:
     run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
     in:
@@ -51,4 +68,4 @@ steps:
       input_daac_collection_shortname: input_daac_collection_shortname
       input_daac_collection_sns: input_daac_collection_sns
     out: []
-      
+

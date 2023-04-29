@@ -1,4 +1,5 @@
-input_processing_labels: ["lable1","label2"]
+job_id: abc123
+input_processing_labels: ["label1","label2"]
 
 # For CMR Search Step
 input_cmr_collection_name: "C2011289787-GES_DISC"
