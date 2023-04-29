@@ -20,7 +20,7 @@ inputs:
   job_id: string
   job_status:
     type: string
-    default: "submitted"
+    default: "unknown"
   job_inputs:
     type: string
     default: "none"
@@ -48,11 +48,13 @@ inputs:
 outputs: []
 
 steps:
+
   create_job:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
-      job_status:  job_status
+      job_status:  
+        valueFrom: "submitted"
       job_inputs: job_inputs
     out: []
 
@@ -67,5 +69,14 @@ steps:
       output_data_bucket: output_data_bucket
       input_daac_collection_shortname: input_daac_collection_shortname
       input_daac_collection_sns: input_daac_collection_sns
+    out: []
+
+  update_job:
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    in:
+      job_id: job_id
+      job_status:  
+        valueFrom: "succeded"
+      job_inputs: job_inputs
     out: []
 
