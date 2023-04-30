@@ -24,8 +24,8 @@ outputs:
     type: File
     outputSource: chirp-rebinning/products
   stdout_file:
-  	type: stdout
-  	outputSource: chirp-rebinning/stdout_file
+    type: stdout
+    outputSource: chirp-rebinning/stdout_file
   stderr_file:
     type: stderr
     outputSource: chirp-rebinning/stderr_file
