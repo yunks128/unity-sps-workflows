@@ -32,6 +32,8 @@ inputs:
   input_cmr_collection_name: string
   input_cmr_search_start_time: string
   input_cmr_search_stop_time: string
+  input_cmr_edl_user: string
+  input_cmr_edl_pass: string
 
   #for chirp rebinning step
   # none -
@@ -56,20 +58,28 @@ steps:
       job_status:  
         valueFrom: "submitted"
       job_inputs: job_inputs
-    out: []
+    out:
+      results
+      errors
 
   workflow:
-    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
+    # FIXME
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/chirp/chirp-rebinning-e2e-workflow.cwl
+    # run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
     in:
       input_processing_labels: input_processing_labels
       input_cmr_collection_name: input_cmr_collection_name
       input_cmr_search_start_time: input_cmr_search_start_time
       input_cmr_search_stop_time: input_cmr_search_stop_time
+      input_cmr_edl_user: input_cmr_edl_user
+      input_cmr_edl_pass: input_cmr_edl_pass
       output_collection_id: output_collection_id
       output_data_bucket: output_data_bucket
       input_daac_collection_shortname: input_daac_collection_shortname
       input_daac_collection_sns: input_daac_collection_sns
-    out: []
+    out:
+    - stdout_file
+    - stderr_file
 
   update_job:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
@@ -78,5 +88,8 @@ steps:
       job_status:  
         valueFrom: "succeded"
       job_inputs: job_inputs
+      input_stdout_file: workflow/stdout_file
+      input_stderr_file: workflow/stderr_file
+    
     out: []
 

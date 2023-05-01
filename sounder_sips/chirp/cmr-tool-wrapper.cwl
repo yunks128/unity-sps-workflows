@@ -23,10 +23,12 @@ inputs:
       prefix: --stop_datetime
   cmr_edl_user:
     type: string
+    default: 'none'
     inputBinding:
       prefix: --edl_username
   cmr_edl_pass:
     type: string
+    default: 'none'
     inputBinding:
       prefix: --edl_password
 
@@ -35,3 +37,4 @@ outputs:
     type: File
     outputBinding:
       glob: cmr_results.txt
+
