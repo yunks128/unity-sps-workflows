@@ -52,15 +52,15 @@ outputs: []
 steps:
 
   create_job:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
       job_status:  
         valueFrom: "submitted"
       job_inputs: job_inputs
     out:
-      results
-      errors
+    - results
+    - errors
 
   workflow:
     # FIXME
@@ -77,19 +77,21 @@ steps:
       output_data_bucket: output_data_bucket
       input_daac_collection_shortname: input_daac_collection_shortname
       input_daac_collection_sns: input_daac_collection_sns
+      dependency_stdout: create_job/results
+      dependency_stderr: create_job/errors
     out:
     - stdout_file
     - stderr_file
 
   update_job:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
       job_status:  
         valueFrom: "succeded"
       job_inputs: job_inputs
-      input_stdout_file: workflow/stdout_file
-      input_stderr_file: workflow/stderr_file
+      input_stdout_files: [workflow/stdout_file, create_job/results]
+      input_stderr_files: [workflow/stderr_file, create_job/errors]
     
     out: []
 
