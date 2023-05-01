@@ -93,5 +93,7 @@ steps:
       input_stdout_files: [workflow/stdout_file, create_job/results]
       input_stderr_files: [workflow/stderr_file, create_job/errors]
     
-    out: []
+    out:
+    - results
+    - errors
 
