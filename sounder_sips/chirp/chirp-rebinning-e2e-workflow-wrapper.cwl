@@ -80,6 +80,7 @@ steps:
       dependency_stdout: create_job/results
       dependency_stderr: create_job/errors
     out:
+    - products
     - stdout_file
     - stderr_file
 
@@ -90,8 +91,8 @@ steps:
       job_status:  
         valueFrom: "succeded"
       job_inputs: job_inputs
-      input_stdout_files: [workflow/stdout_file, create_job/results]
-      input_stderr_files: [workflow/stderr_file, create_job/errors]
+      dependency_stdout: [workflow/stdout_file, create_job/results]
+      dependency_stderr: [workflow/stderr_file, create_job/errors]
     
     out:
     - results
