@@ -20,10 +20,10 @@ outputs:
     type: File
     outputBinding:
       glob: products.txt
-    stdout_file:
-      type: stdout
-    stderr_file:
-      type: stderr
+  stdout_file:
+    type: stdout
+  stderr_file:
+    type: stderr
 
-  stdout: chirp_rebinning_stdout.txt
-  stderr: chirp_rebinning_stderr.txt
+stdout: chirp-rebinning_stdout.txt
+stderr: chirp-rebinning_stderr.txt

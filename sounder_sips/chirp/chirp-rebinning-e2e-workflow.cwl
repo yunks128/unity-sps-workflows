@@ -23,12 +23,12 @@ outputs:
   products:
     type: File
     outputSource: chirp-rebinning/products
-  stdout_file:
-    type: stdout
+  stdout_file: 
     outputSource: chirp-rebinning/stdout_file
+    type: File
   stderr_file:
-    type: stderr
     outputSource: chirp-rebinning/stderr_file
+    type: File
 
 steps:
 
