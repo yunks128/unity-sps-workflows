@@ -56,7 +56,7 @@ steps:
     in:
       job_id: job_id
       job_status:  
-        valueFrom: "submitted"
+        valueFrom: "running"
       job_inputs: job_inputs
     out:
     - results
