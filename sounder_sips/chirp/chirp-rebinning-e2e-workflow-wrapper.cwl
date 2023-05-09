@@ -32,8 +32,8 @@ inputs:
   input_cmr_collection_name: string
   input_cmr_search_start_time: string
   input_cmr_search_stop_time: string
-  input_cmr_edl_user: string
-  input_cmr_edl_pass: string
+  # input_cmr_edl_user: string
+  # input_cmr_edl_pass: string
 
   #for chirp rebinning step
   # none -
@@ -47,7 +47,10 @@ inputs:
   input_daac_collection_sns: string
 
 ## Outputs of the CHIRP e2e workflow
-outputs: []
+outputs:
+  results: 
+    type: File
+    outputSource: workflow/results
 
 steps:
 
@@ -64,15 +67,15 @@ steps:
 
   workflow:
     # FIXME
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/chirp/chirp-rebinning-e2e-workflow.cwl
-    # run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
+    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/chirp/chirp-rebinning-e2e-workflow.cwl
+    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
     in:
       input_processing_labels: input_processing_labels
       input_cmr_collection_name: input_cmr_collection_name
       input_cmr_search_start_time: input_cmr_search_start_time
       input_cmr_search_stop_time: input_cmr_search_stop_time
-      input_cmr_edl_user: input_cmr_edl_user
-      input_cmr_edl_pass: input_cmr_edl_pass
+      # input_cmr_edl_user: input_cmr_edl_user
+      # input_cmr_edl_pass: input_cmr_edl_pass
       output_collection_id: output_collection_id
       output_data_bucket: output_data_bucket
       input_daac_collection_shortname: input_daac_collection_shortname
@@ -80,9 +83,7 @@ steps:
       dependency_stdout: create_job/results
       dependency_stderr: create_job/errors
     out:
-    - products
-    - stdout_file
-    - stderr_file
+    - results
 
   update_job:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
@@ -91,8 +92,9 @@ steps:
       job_status:  
         valueFrom: "succeded"
       job_inputs: job_inputs
-      dependency_stdout: [workflow/stdout_file, create_job/results]
-      dependency_stderr: [workflow/stderr_file, create_job/errors]
+      dependency_stdout: [create_job/results]
+      dependency_stderr: [create_job/errors]
+      dependency_results: [workflow/results]
     
     out:
     - results

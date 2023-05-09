@@ -3,10 +3,10 @@ input_processing_labels: ["label1","label2"]
 
 # For CMR Search Step
 input_cmr_collection_name: "C2011289787-GES_DISC"
-input_cmr_search_start_time: "2016-08-22"
-input_cmr_search_stop_time: "2016-09-06"
-input_cmr_edl_user: 'abc'
-input_cmr_edl_pass: '123'
+input_cmr_search_start_time: "2016-08-22T00:10:00Z"
+input_cmr_search_stop_time: "2016-09-06T23:59:59Z"
+#input_cmr_edl_user: 'abc'
+#input_cmr_edl_pass: '123'
 limits: "-1"
 
 
