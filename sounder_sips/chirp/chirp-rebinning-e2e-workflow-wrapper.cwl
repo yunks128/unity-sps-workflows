@@ -54,7 +54,7 @@ outputs: []
 steps:
 
   create_job:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/jobs-data-sns-topic/sounder_sips/utils/publish_job_status.cwlpublish_job_status.cwl
     in:
       job_id: job_id
       job_status:
