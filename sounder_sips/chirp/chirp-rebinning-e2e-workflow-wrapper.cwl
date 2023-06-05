@@ -24,6 +24,8 @@ inputs:
   job_inputs:
     type: string
     default: "none"
+  jobs_data_sns_topic_arn:
+    type: string
 
   # Generic inputs
   input_processing_labels: string[]
@@ -55,7 +57,7 @@ steps:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
-      job_status:  
+      job_status:
         valueFrom: "running"
       job_inputs: job_inputs
     out:
@@ -88,13 +90,12 @@ steps:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
-      job_status:  
+      job_status:
         valueFrom: "succeded"
       job_inputs: job_inputs
       dependency_stdout: [workflow/stdout_file, create_job/results]
       dependency_stderr: [workflow/stderr_file, create_job/errors]
-    
+
     out:
     - results
     - errors
-
