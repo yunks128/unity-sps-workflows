@@ -17,8 +17,8 @@ def build_image(tag):
     :param tag: str; example, hello_world:develop
     :return: int; return status of docker build command
     """
-    if ':' not in tag:
-        tag = '%s:develop' % tag
+    if ":" not in tag:
+        tag = "%s:develop" % tag
 
     command = [
         "docker",
@@ -29,23 +29,23 @@ def build_image(tag):
         "-f",
         "docker/Dockerfile",
         "--progress",
-        "plain"
+        "plain",
     ]
-    print(' '.join(command))
+    print(" ".join(command))
     process = subprocess.Popen(command, stdout=subprocess.PIPE)
 
-    for c in iter(lambda: process.stdout.read(1), b''):
+    for c in iter(lambda: process.stdout.read(1), b""):
         sys.stdout.buffer.write(c)
         print(c)
     return process.poll()
 
 
 def build_container_name(path, version="develop"):
-    if path.endswith('/'):
+    if path.endswith("/"):
         path = path[:-1]
     print("path", path)
-    container = path.split('/')[-1]
-    container = 'container-%s:%s' % (container, version.lower())
+    container = path.split("/")[-1]
+    container = "container-%s:%s" % (container, version.lower())
     print("container", container)
     return container
 
@@ -56,8 +56,8 @@ def build_job_spec_name(file_name, version="develop"):
     :param version:
     :return: str, ex. job-hello_world:develop
     """
-    name = file_name.split('.')[-1]
-    job_name = 'job-%s:%s' % (name, version)
+    name = file_name.split(".")[-1]
+    job_name = "job-%s:%s" % (name, version)
     return job_name
 
 
@@ -73,12 +73,14 @@ def validate_hysds_ios(path):
 
     fps = os.path.join(path, "docker")
     for p in filter(lambda x: x.startswith("hysds-io"), os.listdir(fps)):
-        with open(os.path.join(fps, p), 'r') as f:
+        with open(os.path.join(fps, p), "r") as f:
             d = json.load(f)
             validator = jsonschema.Draft7Validator(schema)
             errors = sorted(validator.iter_errors(d), key=lambda e: e.path)
             if len(errors) > 0:
-                raise RuntimeError("JSON schema failed to validate; errors: {}".format(errors))
+                raise RuntimeError(
+                    "JSON schema failed to validate; errors: {}".format(errors)
+                )
 
 
 def validate_job_specs(path):
@@ -93,12 +95,14 @@ def validate_job_specs(path):
 
     fps = os.path.join(path, "docker")
     for p in filter(lambda x: x.startswith("job-spec"), os.listdir(fps)):
-        with open(os.path.join(fps, p), 'r') as f:
+        with open(os.path.join(fps, p), "r") as f:
             d = json.load(f)
             validator = jsonschema.Draft7Validator(schema)
             errors = sorted(validator.iter_errors(d), key=lambda e: e.path)
             if len(errors) > 0:
-                raise RuntimeError("JSON schema failed to validate; errors: {}".format(errors))
+                raise RuntimeError(
+                    "JSON schema failed to validate; errors: {}".format(errors)
+                )
 
 
 def publish_container(path, repository, version="develop", dry_run=False):
@@ -112,7 +116,7 @@ def publish_container(path, repository, version="develop", dry_run=False):
     command = ["docker", "inspect", "%s:%s" % (repository, version)]
     process = subprocess.run(command, stdout=subprocess.PIPE)
     image_info = json.loads(process.stdout)
-    digest = image_info[0]['Id']
+    digest = image_info[0]["Id"]
     metadata = {
         "name": build_container_name(path, version.lower()),
         "version": version,
@@ -149,7 +153,9 @@ def publish_job_spec(path, version="develop", dry_run=False):
             print("job_specs: ", json.dumps(metadata, indent=2))
             if dry_run is False:
                 endpoint = os.path.join(__MOZART_REST_API, "job_spec/add")
-                r = requests.post(endpoint, data={"spec": json.dumps(metadata)}, verify=False)
+                r = requests.post(
+                    endpoint, data={"spec": json.dumps(metadata)}, verify=False
+                )
                 print(r.text)
                 r.raise_for_status()
 
@@ -163,7 +169,7 @@ def publish_hysds_io(path, version="develop", dry_run=False):
     """
     fps = os.path.join(path, "docker")
     for p in filter(lambda x: x.startswith("hysds-io"), os.listdir(fps)):
-        name = p.split('.')[-1]
+        name = p.split(".")[-1]
         metadata = dict()
         metadata["job-specification"] = build_job_spec_name(name, version)
         metadata["job-version"] = version
@@ -188,7 +194,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("-f", "--file-path")
     parser.add_argument("-i", "--image", required=True)
-    parser.add_argument("--dry-run", action='store_true', default=False)
+    parser.add_argument("--dry-run", action="store_true", default=False)
 
     args = parser.parse_args()
     file_path = os.path.abspath(args.file_path) or os.getcwd()
@@ -210,9 +216,9 @@ if __name__ == "__main__":
     if build_image_status != 0:
         raise RuntimeError("Failed to build docker image")
 
-    image_split = image.split(':')
+    image_split = image.split(":")
     repo = image_split[0]
-    _version = image_split[-1] if len(image_split) > 1 else 'develop'
+    _version = image_split[-1] if len(image_split) > 1 else "develop"
 
     publish_job_spec(file_path, _version, dry_run=dry_run)
     publish_hysds_io(file_path, _version, dry_run=dry_run)
