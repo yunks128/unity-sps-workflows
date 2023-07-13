@@ -52,7 +52,7 @@ inputs:
 outputs:
   results: 
     type: File
-    outputSource: workflow/results
+    outputSource: workflow/products
 
 steps:
 
@@ -86,7 +86,9 @@ steps:
       dependency_stdout: create_job/results
       dependency_stderr: create_job/errors
     out:
-    - results
+    - products
+    - stdout_file
+    - stderr_file
 
   update_job:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
