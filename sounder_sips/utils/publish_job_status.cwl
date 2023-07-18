@@ -30,22 +30,16 @@ inputs:
         inputBinding:
             position: 4
             prefix: --job_outputs
-    tags:
-        type: string
-        default: "{}"
-        inputBinding:
-            position: 5
-            prefix: --tags
     auth_method:
         type: string
         default: iam
         inputBinding:
-            position: 6
+            position: 5
             prefix: --aws_auth_method
     jobs_data_sns_topic_arn:
         type: string
         inputBinding:
-            position: 7
+            position: 6
             prefix: --jobs_data_sns_topic_arn
 outputs:
     results:
