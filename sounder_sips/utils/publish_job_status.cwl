@@ -3,7 +3,7 @@ class: CommandLineTool
 baseCommand: ["/usr/app/publish_job.py"]
 hints:
     DockerRequirement:
-        dockerPull: ghcr.io/unity-sds/unity-sps-prototype/sps-job-publisher:develop
+        dockerPull: ghcr.io/unity-sds/unity-sps-prototype/sps-job-publisher:unity-v1.1.0
 requirements:
     NetworkAccess:
         networkAccess: true
