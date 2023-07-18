@@ -2,6 +2,14 @@
   "mode": "async",
   "response": "document",
   "inputs": [
+     {
+      "id": "job_id",
+      "data": "abc123"
+    },
+    {
+      "id": "input_processing_labels",
+      "data": ["label1", "label2"]
+    },
     {
       "id": "input_cmr_collection_name",
       "data": "C2011289787-GES_DISC"
@@ -21,6 +29,22 @@
     {
       "id": "input_cmr_edl_pass",
       "data": "cmr_pass"
+    },
+    {
+      "id": "output_collection_id",
+      "data": "CHIRP_OUTPUT_COLLECTION"
+    },
+    {
+      "id": "output_data_bucket",
+      "data": "s3://unity-data-bucket"
+    },
+    {
+      "id": "input_daac_collection_shortname",
+      "data": "CHIRP_L1B"
+    },
+    {
+      "id": "input_daac_collection_sns",
+      "data": "arn:://SNS-arn"
     }
   ],
   "outputs": [

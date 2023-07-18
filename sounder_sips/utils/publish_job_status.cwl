@@ -6,7 +6,7 @@ hints:
         dockerPull: ghcr.io/unity-sds/unity-sps-prototype/sps-job-publisher:develop
 requirements:
     NetworkAccess:
-        networkAccess: true 
+        networkAccess: true
 
 inputs:
     job_id:
@@ -42,6 +42,11 @@ inputs:
         inputBinding:
             position: 6
             prefix: --aws_auth_method
+    jobs_data_sns_topic_arn:
+        type: string
+        inputBinding:
+            position: 7
+            prefix: --jobs_data_sns_topic_arn
 outputs:
     results:
         type: stdout
