@@ -92,7 +92,7 @@ steps:
     in:
       job_id: job_id
       job_status:
-        valueFrom: "succeded"
+        valueFrom: "succeeded"
       job_inputs: job_inputs
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
       dependency_stdout: [workflow/stdout_file, create_job/results]
