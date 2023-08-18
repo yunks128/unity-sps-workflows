@@ -49,7 +49,8 @@ steps:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/sleep.cwl
     # run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
     in:
-        sleep_time: 30
+        sleep_time:
+          valueFrom: 30
     out:
     - stdout_file
     - stderr_file
