@@ -52,7 +52,7 @@ inputs:
 outputs:
   results: 
     type: File
-    outputSource: workflow/products
+    outputSource: workflow/results
 
 steps:
 
@@ -69,9 +69,10 @@ steps:
     - errors
 
   workflow:
-    # FIXME
+    # FIXME: change to 'main' branch
     # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/chirp/chirp-rebinning-e2e-workflow.cwl
-    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
+    # run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
+    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/rebinning-cwl/chirp-rebinning-e2e-workflow.cwl
     in:
       input_processing_labels: input_processing_labels
       input_cmr_collection_name: input_cmr_collection_name
@@ -86,9 +87,10 @@ steps:
       dependency_stdout: create_job/results
       dependency_stderr: create_job/errors
     out:
-    - products
-    - stdout_file
-    - stderr_file
+    - results
+    # FIXME: enable stdout, stderr
+    # - stdout_file
+    # - stderr_file
 
   update_job:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
@@ -98,8 +100,10 @@ steps:
         valueFrom: "succeeded"
       job_inputs: job_inputs
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
-      dependency_stdout: [workflow/stdout_file, create_job/results]
-      dependency_stderr: [workflow/stderr_file, create_job/errors]
+      # FIXME
+      dependency_output: [workflow/results, create_job/results]
+      # dependency_stdout: [workflow/stdout_file, create_job/results]
+      # dependency_stderr: [workflow/stderr_file, create_job/errors]
     out:
     - results
     - errors
