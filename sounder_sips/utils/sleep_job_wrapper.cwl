@@ -25,6 +25,9 @@ inputs:
     default: "none"
   jobs_data_sns_topic_arn:
     type: string
+  sleep_time:
+    type: int
+    default: 30
 
 
 ## Outputs of the CHIRP e2e workflow
@@ -49,7 +52,7 @@ steps:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/sleep.cwl
     # run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
     in:
-        sleep_time: 30
+      sleep_time: sleep_time
     out:
     - stdout_file
     - stderr_file
