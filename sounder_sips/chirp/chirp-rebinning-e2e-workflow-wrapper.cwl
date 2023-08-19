@@ -23,7 +23,7 @@ inputs:
     default: "unknown"
   job_inputs:
     type: string
-    default: "none"
+    default: "{}"
   jobs_data_sns_topic_arn:
     type: string
 
