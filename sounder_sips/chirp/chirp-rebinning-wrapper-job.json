@@ -4,7 +4,7 @@
   "inputs": [
      {
       "id": "job_id",
-      "data": "abc123"
+      "data": "abc1234"
     },
     {
       "id": "input_processing_labels",
@@ -16,27 +16,19 @@
     },
     {
       "id": "input_cmr_search_start_time",
-      "data": "2016-08-22"
+      "data": "2016-08-22T00:10:00Z"
     },
     {
       "id": "input_cmr_search_stop_time",
-      "data": "2016-09-06"
-    },
-     {
-      "id": "input_cmr_edl_user",
-      "data": "cmr_user"
-    },
-    {
-      "id": "input_cmr_edl_pass",
-      "data": "cmr_pass"
+      "data": "2016-09-06T23:59:59Z"
     },
     {
       "id": "output_collection_id",
-      "data": "CHIRP_OUTPUT_COLLECTION"
+      "data": "CHIRP_OUTPUT_COLLECTION_TEST"
     },
     {
       "id": "output_data_bucket",
-      "data": "s3://unity-data-bucket"
+      "data": "uds-dev-cumulus-protected"
     },
     {
       "id": "input_daac_collection_shortname",
