@@ -95,8 +95,6 @@ steps:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_results.cwl
     in:
       job_id: job_id
-      update_results:
-        valueFrom: "--update_results"
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
       # FIXME
       dependency_output: [workflow/results, create_job/results]

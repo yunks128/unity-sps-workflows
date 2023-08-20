@@ -15,6 +15,7 @@ inputs:
             position: 1
     update_results:
         type: string
+        default: --update_results
         inputBinding:
             position: 2
     auth_method:
