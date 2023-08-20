@@ -13,11 +13,10 @@ inputs:
         type: string
         inputBinding:
             position: 1
-    job_status:
+    update_results:
         type: string
         inputBinding:
             position: 2
-            prefix: --update_status
     auth_method:
         type: string
         default: iam

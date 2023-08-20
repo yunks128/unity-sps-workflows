@@ -62,7 +62,6 @@ steps:
       job_id: job_id
       job_status:
         valueFrom: "running"
-      job_inputs: job_inputs
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
     out:
     - results
@@ -93,12 +92,11 @@ steps:
     # - stderr_file
 
   update_job:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_results.cwl
     in:
       job_id: job_id
-      job_status:
-        valueFrom: "succeeded"
-      job_inputs: job_inputs
+      update_results:
+        valueFrom: "--update_results"
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
       # FIXME
       dependency_output: [workflow/results, create_job/results]
