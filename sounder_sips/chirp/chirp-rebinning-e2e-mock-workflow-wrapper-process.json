@@ -1,0 +1,101 @@
+{
+  "processDescription": {
+    "process": {
+      "id": "chirp",
+      "title": "CHIRP MOCK Rebinning",
+      "owsContext": {
+        "offering": {
+          "code": "http://www.opengis.net/eoc/applicationContext/cwl",
+          "content": {
+            "href": "https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/chirp/chirp-rebinning-e2e-mock-workflow-wrapper.cwl"
+          }
+        }
+      },
+      "abstract": "chirp",
+      "keywords": [],
+      "inputs": [
+        {
+          "id": "job_id",
+          "title": "job_id",
+          "formats": [
+            {
+              "mimeType": "text",
+              "default": true
+            }
+          ]
+        },
+        {
+          "id": "input_processing_labels",
+          "title": "input_processing_labels",
+          "formats": [
+            {
+              "mimeType": "text",
+              "default": true
+            }
+          ]
+        },
+        {
+          "id": "input_cmr_collection_name",
+          "title": "input_cmr_collection_name",
+          "formats": [
+            {
+              "mimeType": "text",
+              "default": true
+            }
+          ]
+        },
+        {
+          "id": "input_cmr_search_start_time",
+          "title": "input_cmr_search_start_time",
+          "formats": [
+            {
+              "mimeType": "text",
+              "default": true
+            }
+          ]
+        },
+        {
+          "id": "input_cmr_search_stop_time",
+          "title": "input_cmr_search_stop_time",
+          "formats": [
+            {
+              "mimeType": "text",
+              "default": true
+            }
+          ]
+        },
+       {
+          "id": "input_cmr_edl_user",
+          "title": "input_cmr_edl_user",
+          "formats": [
+            {
+              "mimeType": "text",
+              "default": true
+            }
+          ]
+        },
+        {
+          "id": "input_cmr_edl_pass",
+          "title": "input_cmr_edl_pass",
+          "formats": [
+            {
+              "mimeType": "text",
+              "default": true
+            }
+          ]
+        }
+      ],
+      "outputs": []
+    },
+    "processVersion": "develop",
+    "jobControlOptions": ["async-execute"],
+    "outputTransmission": ["reference"]
+  },
+  "immediateDeployment": true,
+  "executionUnit": [
+    {
+      "href": "docker.registry/chirp:latest"
+    }
+  ],
+  "deploymentProfileName": "http://www.opengis.net/profiles/eoc/dockerizedApplication"
+}
