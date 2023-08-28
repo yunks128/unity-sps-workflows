@@ -1,15 +1,63 @@
-# unity-sps-workflows
-Catalog of CWL workflows
+<!-- Header block for project -->
+<hr>
+
+<div align="center">
+
+![logo](https://user-images.githubusercontent.com/3129134/163255685-857aa780-880f-4c09-b08c-4b53bf4af54d.png)
+<!-- ☝️ If you see logo rendering errors, make sure you're not using indentation, or try an HTML IMG tag -->
+
+<h1 align="center">Unity SPS Workflows</h1>
+<!-- ☝️ Replace with your repo name ☝️ -->
+
+</div>
+
+<pre align="center">A catalog of CWL workflows</pre>
+<!-- ☝️ Replace with a single sentence describing the purpose of your repo / proj ☝️ -->
+
+<!-- Header block for project -->
+
+<!-- ☝️ Add badges via: https://shields.io e.g. ![](https://img.shields.io/github/your_chosen_action/your_org/your_repo) ☝️ -->
+
+<!-- ☝️ Screenshot of your software (if applicable) via ![](https://uri-to-your-screenshot) ☝️ -->
+
+For detailed information about this repository and its purpose, please refer to the parent repository, Unity SPS, at [https://github.com/unity-sds/unity-sps](https://github.com/unity-sds/unity-sps).
+
+## Features
+
+* Please consult the parent repository [unity-sps](https://github.com/unity-sds/unity-sps) for features related to all Unity SPS repositories.
+
+<!-- ☝️ Replace with a bullet-point list of your features ☝️ -->
+
+## Contents
+
+* [Quick Start](#quick-start)
+* [Changelog](#changelog)
+* [FAQ](#frequently-asked-questions-faq)
+* [Contributing Guide](#contributing)
+* [License](#license)
+* [Support](#support)
+
+## Quick Start
+
+For comprehensive details, guidelines, and documentation, refer to the parent repository: [unity-sps](https://github.com/unity-sds/unity-sps).
 
 
-## Steps to run the L1B CWL PGE in HySDS
-1. pull down the `l1b_cwl_dind` branch in `unity-sps-worklows` (or use the `main` branch after this is merged in)
-2. update the `ssips_L1b_workflow.yml` with your AWS credentials (`aws_access_key_id`, `aws_session_token`, etc.)
-3. copy the unity-sps-workflows directory to the verdi pod (path may vary)
-`$ kubectl cp /path/to/unity-sps-workflows verdi-668859cbf5-xjmkv:/tmp/unity-sps-workflows -c verdi`
-4. exec into the verdi pod (pod name may vary)
-`$ kubectl exec -it verdi-668859cbf5-xjmkv -c verdi -- bash`
-5. run the build_container.py script to create the HySDS job
-`$ python /tmp/unity-sps-workflows/docker/build_container.py --image unity-sps-workflows:develop -f /tmp/unity-sps-workflows`
-6. run the job in HySDS ui (use the `verdi-job_worker` queue)
-7. the job logs should be in your work local directory `/tmp/data/work/jobs/2022/` under `_stderr.txt`
+## Changelog
+
+Please see the parent repository's [CHANGELOG.md](https://github.com/unity-sds/unity-sps/blob/main/CHANGELOG.md) for a history of changes.
+
+## Frequently Asked Questions (FAQ)
+
+For any questions, consult the FAQ of the parent repository [unity-sps](https://github.com/unity-sds/unity-sps).
+
+## Contributing
+
+To contribute, kindly refer to the guidelines in the parent repository: [unity-sps](https://github.com/unity-sds/unity-sps).
+
+## License
+
+See our: [LICENSE](LICENSE)
+
+## Support
+
+For support, please contact the maintainers of the parent repository [unity-sps](https://github.com/unity-sds/unity-sps).
