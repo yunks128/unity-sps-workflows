@@ -2,12 +2,12 @@
   "processDescription": {
     "process": {
       "id": "chirp",
-      "title": "CHIRP Rebinning",
+      "title": "CHIRP MOCK Rebinning",
       "owsContext": {
         "offering": {
           "code": "http://www.opengis.net/eoc/applicationContext/cwl",
           "content": {
-            "href": "https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/chirp/chirp-rebinning-e2e-workflow-wrapper.cwl"
+            "href": "https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/chirp/chirp-rebinning-e2e-mock-workflow-wrapper.cwl"
           }
         }
       },
@@ -64,9 +64,9 @@
             }
           ]
         },
-        {
-          "id": "output_collection_id",
-          "title": "output_collection_id",
+       {
+          "id": "input_cmr_edl_user",
+          "title": "input_cmr_edl_user",
           "formats": [
             {
               "mimeType": "text",
@@ -75,28 +75,8 @@
           ]
         },
         {
-          "id": "output_data_bucket",
-          "title": "output_data_bucket",
-          "formats": [
-            {
-              "mimeType": "text",
-              "default": true
-            }
-          ]
-        },
-        {
-          "id": "input_daac_collection_shortname",
-          "title": "input_daac_collection_shortname",
-          "formats": [
-            {
-              "mimeType": "text",
-              "default": true
-            }
-          ]
-        },
-        {
-          "id": "input_daac_collection_sns",
-          "title": "input_daac_collection_sns",
+          "id": "input_cmr_edl_pass",
+          "title": "input_cmr_edl_pass",
           "formats": [
             {
               "mimeType": "text",

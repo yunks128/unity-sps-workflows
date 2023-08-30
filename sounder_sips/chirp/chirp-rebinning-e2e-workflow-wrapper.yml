@@ -3,21 +3,19 @@ input_processing_labels: ["label1","label2"]
 
 # For CMR Search Step
 input_cmr_collection_name: "C2011289787-GES_DISC"
-input_cmr_search_start_time: "2016-08-22"
-input_cmr_search_stop_time: "2016-09-06"
-input_cmr_edl_user: 'abc'
-input_cmr_edl_pass: '123'
+input_cmr_search_start_time: "2016-08-22T00:10:00Z"
+input_cmr_search_stop_time: "2016-09-06T23:59:59Z"
 limits: "-1"
-
 
 #for chirp rebinning step
 # none -
 
 # For unity data upload step, unity catalog
-output_collection_id: "CHIRP_OUTPUT_COLLECTION"
-output_data_bucket: "s3://unity-data-bucket"
-
+output_collection_id: "CHIRP_OUTPUT_COLLECTION_TEST"
+output_data_bucket: "uds-dev-cumulus-protected"
 
 # For DAAC CNM step
 input_daac_collection_shortname: "CHIRP_L1B"
 input_daac_collection_sns: "arn:://SNS-arn"
+
+jobs_data_sns_topic_arn: "arn:aws:sns:us-west-2:XXXXXXXX:unity-dev-sps-SNS-JobsDataTopic-XXXX.fifo"
