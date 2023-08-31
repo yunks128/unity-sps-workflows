@@ -14,32 +14,28 @@ inputs:
         inputBinding:
             position: 1
             prefix: --job_id
-    job_status:
+    update_status:
         type: string
+        default: ""
         inputBinding:
             position: 2
-            prefix: --job_status
-    job_inputs:
+            prefix: --update_status
+    update_results:
         type: string
+        default: ""
         inputBinding:
             position: 3
-            prefix: --job_inputs
-    job_outputs:
-        type: string
-        default: "[]"
-        inputBinding:
-            position: 4
-            prefix: --job_outputs
+            prefix: --update_results
     auth_method:
         type: string
         default: iam
         inputBinding:
-            position: 5
+            position: 4
             prefix: --aws_auth_method
     jobs_data_sns_topic_arn:
         type: string
         inputBinding:
-            position: 6
+            position: 5
             prefix: --jobs_data_sns_topic_arn
 outputs:
     results:
