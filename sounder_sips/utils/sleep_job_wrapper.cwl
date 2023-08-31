@@ -17,12 +17,9 @@ inputs:
 
   # publish_job parameters
   job_id: string
-  job_status:
+  update_status:
     type: string
     default: "unknown"
-  job_inputs:
-    type: string
-    default: "none"
   jobs_data_sns_topic_arn:
     type: string
   sleep_time:
