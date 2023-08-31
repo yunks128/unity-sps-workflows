@@ -56,7 +56,7 @@ steps:
     in:
       job_id: job_id
       update_results:
-        valueFrom: "true"
+        default: true
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
       dependency_stdout: [workflow/stdout_file, create_job/results]
       dependency_stderr: [workflow/stderr_file, create_job/errors]

@@ -15,14 +15,14 @@ inputs:
             position: 1
             prefix: --job_id
     update_status:
-        type: boolean
-        default: false
+        type: string
+        default: ""
         inputBinding:
             position: 2
             prefix: --update_status
     update_results:
-        type: string
-        default: ""
+        type: boolean
+        default: false
         inputBinding:
             position: 3
             prefix: --update_results
