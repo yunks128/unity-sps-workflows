@@ -18,12 +18,9 @@ inputs:
 
   # publish_job parameters
   job_id: string
-  job_status:
+  update_status:
     type: string
     default: "unknown"
-  job_inputs:
-    type: string
-    default: "{}"
   jobs_data_sns_topic_arn:
     type: string
 
@@ -60,9 +57,8 @@ steps:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/ryan_temp/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
-      job_status:
+      update_status:
         valueFrom: "running"
-      job_inputs: job_inputs
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
     out:
     - results
@@ -96,9 +92,8 @@ steps:
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/ryan_temp/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
-      job_status:
-        valueFrom: "succeeded"
-      job_inputs: job_inputs
+      update_results:
+        valueFrom: "true"
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
       # FIXME
       dependency_output: [workflow/results, create_job/results]
