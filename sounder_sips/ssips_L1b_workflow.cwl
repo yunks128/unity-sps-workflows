@@ -43,10 +43,10 @@ inputs:
     default: SNPP
   username: 
     type: string
-    default: usps_username
+    default: /sps/processing/workflows/unity_username
   password: 
     type: string
-    default: usps_password
+    default: /sps/processing/workflows/unity_password
   password_type: 
     type: string
     default: PARAM_STORE
