@@ -43,10 +43,10 @@ inputs:
     default: SNPP
   username: 
     type: string
-    default: /sps/processing/workflows/unity_username
+    default: usps_username
   password: 
     type: string
-    default: /sps/processing/workflows/unity_password
+    default: usps_password
   password_type: 
     type: string
     default: PARAM_STORE
@@ -82,7 +82,7 @@ outputs:
 
 steps:
   l1b-stage-in:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_download.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/ryan_temp/sounder_sips/utils/dapa_download.cwl
     in:
       download_dir: download_dir
       dapa_api: dapa_api
