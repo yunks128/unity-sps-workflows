@@ -82,8 +82,7 @@ outputs:
 
 steps:
   l1b-stage-in:
-    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_download.cwl
-    run: utils/dapa_download.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/dapa_download.cwl
     in:
       download_dir: download_dir
       dapa_api: dapa_api
