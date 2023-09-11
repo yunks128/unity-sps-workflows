@@ -20,6 +20,8 @@
 
 <!-- ☝️ Screenshot of your software (if applicable) via ![](https://uri-to-your-screenshot) ☝️ -->
 
+[Unity Docs](https://unity-sds.gitbook.io/docs/) | [Unity-SPS Docs](https://unity-sds.gitbook.io/docs/developer-docs/science-processing)
+
 For detailed information about this repository and its purpose, please refer to the parent repository, Unity SPS, at [https://github.com/unity-sds/unity-sps](https://github.com/unity-sds/unity-sps).
 
 ## Features
