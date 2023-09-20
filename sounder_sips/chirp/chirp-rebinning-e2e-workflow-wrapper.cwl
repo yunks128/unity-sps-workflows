@@ -70,9 +70,7 @@ steps:
 
   workflow:
     # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/chirp/chirp-rebinning-e2e-workflow.cwl
-    # FIXME: change to 'main' branch
-    # run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
-    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/rebinning-cwl/chirp-rebinning-e2e-workflow.cwl
+    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
     in:
       input_processing_labels: input_processing_labels
       input_cmr_collection_name: input_cmr_collection_name
