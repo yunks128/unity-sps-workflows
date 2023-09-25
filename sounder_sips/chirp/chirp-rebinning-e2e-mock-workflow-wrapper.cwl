@@ -85,9 +85,6 @@ steps:
       job_inputs: job_inputs
       job_outputs: [workflow/results]
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
-      dependency_output: [workflow/products, create_job/results]
-      dependency_stdout: [workflow/stdout_file, create_job/results]
-      dependency_stderr: [workflow/stderr_file, create_job/errors]
     out:
     - results
     - errors
