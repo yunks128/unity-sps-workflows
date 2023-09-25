@@ -60,7 +60,8 @@ steps:
     - errors
 
   workflow:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/chirp/chirp-rebinning-e2e-workflow.cwl
+    # FIXME: devel --> main
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/chirp/chirp-rebinning-e2e-workflow.cwl
     in:
       input_processing_labels: input_processing_labels
       input_cmr_collection_name: input_cmr_collection_name
