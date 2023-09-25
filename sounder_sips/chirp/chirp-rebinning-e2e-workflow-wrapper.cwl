@@ -57,7 +57,8 @@ outputs:
 steps:
 
   create_job:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    # FIXME: devel --> main
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
       job_status:
@@ -85,23 +86,22 @@ steps:
       dependency_stdout: create_job/results
       dependency_stderr: create_job/errors
     out:
+    # Note: this is the "chirp-rebinning/stage_out_results"
     - results
     # FIXME: enable stdout, stderr
     # - stdout_file
     # - stderr_file
 
   update_job:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    # FIXME: devel --> main
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
       job_status:
         valueFrom: "succeeded"
       job_inputs: job_inputs
+      job_outputs: [workflow/results]
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
-      # FIXME
-      dependency_output: [workflow/results, create_job/results]
-      # dependency_stdout: [workflow/stdout_file, create_job/results]
-      # dependency_stderr: [workflow/stderr_file, create_job/errors]
     out:
     - results
     - errors
