@@ -21,12 +21,13 @@ inputs:
             prefix: --job_status
     job_inputs:
         type: string
+        default: "{}"
         inputBinding:
             position: 3
             prefix: --job_inputs
     job_outputs:
-        type: [File]
-        default: []
+        type: string
+        default: "{}"
         inputBinding:
             position: 4
             prefix: --job_outputs
