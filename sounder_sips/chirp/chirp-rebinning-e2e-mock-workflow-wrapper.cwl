@@ -47,7 +47,8 @@ outputs:
 steps:
 
   create_job:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    # FIXME: devel --> main
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
       job_status:
@@ -70,17 +71,19 @@ steps:
       dependency_stdout: create_job/results
       dependency_stderr: create_job/errors
     out:
-    - products
+    - results
     - stdout_file
     - stderr_file
 
   update_job:
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    # FIXME: devel --> main
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
       job_status:
         valueFrom: "succeeded"
       job_inputs: job_inputs
+      job_outputs: [workflow/results]
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
       dependency_output: [workflow/products, create_job/results]
       dependency_stdout: [workflow/stdout_file, create_job/results]

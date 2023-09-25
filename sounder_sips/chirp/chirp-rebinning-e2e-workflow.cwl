@@ -20,7 +20,7 @@ inputs:
   input_cmr_edl_pass: string
 
 outputs:
-  products:
+  results:
     type: File
     outputSource: chirp-rebinning/products
   stdout_file: 
