@@ -40,9 +40,9 @@ inputs:
 
 ## Outputs of the CHIRP e2e workflow
 outputs:
-  products: 
+  results: 
     type: File
-    outputSource: workflow/products
+    outputSource: workflow/results
 
 steps:
 
