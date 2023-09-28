@@ -48,8 +48,8 @@ steps:
 
   create_job:
     # FIXME: devel --> main
-    run: ../utils/publish_job_status.cwl
-    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    # run: ../utils/publish_job_status.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
       job_status:
@@ -86,7 +86,7 @@ steps:
       job_status:
         valueFrom: "succeeded"
       job_inputs: job_inputs
-      # job_outputs: [workflow/results]
+      job_outputs: workflow/results
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
     out:
     - results
