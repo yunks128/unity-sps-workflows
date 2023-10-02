@@ -85,8 +85,7 @@ steps:
 
   update_job:
     # FIXME: devel --> main
-    run: ../utils/publish_job_status.cwl
-    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/publish_job_status.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
       job_status:
