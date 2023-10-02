@@ -26,8 +26,8 @@ inputs:
             position: 3
             prefix: --job_inputs
     job_outputs:
-        type: File
-        default: null
+        type: string
+        default: "{}"
         inputBinding:
             position: 4
             prefix: --job_outputs
