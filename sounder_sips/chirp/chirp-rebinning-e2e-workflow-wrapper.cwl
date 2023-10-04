@@ -1,5 +1,5 @@
 #!/usr/bin/env cwl-runner
-cwlVersion: v1.1
+cwlVersion: v1.2
 class: Workflow
 label: Workflow that wraps the execution of the Sounder SIPS end-to-end chirp rebinngin workflow by invoking the U-SPS job management functionality
 
@@ -58,7 +58,7 @@ steps:
 
   create_job:
     # FIXME: devel --> main
-    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/utils/publish_job_status.cwl
+    run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/publish_job_status.cwl
     in:
       job_id: job_id
       job_status:
@@ -70,7 +70,8 @@ steps:
     - errors
 
   workflow:
-    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/main/sounder_sips/chirp/chirp-rebinning-e2e-workflow.cwl
+    # FIXME: devel --> main
+    # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/chirp/chirp-rebinning-e2e-workflow.cwl
     run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
     in:
       input_processing_labels: input_processing_labels
@@ -92,6 +93,14 @@ steps:
     # - stdout_file
     # - stderr_file
 
+  serialize_outputs:
+    run: ../utils/file_to_json_string.cwl
+    in:
+      the_file: workflow/results
+    out:
+    - the_json_string
+
+
   update_job:
     # FIXME: devel --> main
     run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/utils/publish_job_status.cwl
@@ -100,7 +109,7 @@ steps:
       job_status:
         valueFrom: "succeeded"
       job_inputs: job_inputs
-      job_outputs: [workflow/results]
+      job_outputs: serialize_outputs/the_json_string
       jobs_data_sns_topic_arn: jobs_data_sns_topic_arn
     out:
     - results
