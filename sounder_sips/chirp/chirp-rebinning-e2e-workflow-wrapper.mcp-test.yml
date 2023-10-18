@@ -12,7 +12,7 @@ limits: "-1"
 # none -
 
 # For unity data upload step, unity catalog
-output_collection_id: "urn:nasa:unity:uds_local_test:DEV1:CHRP_16_DAY_REBIN___1"
+output_collection_id: "urn:nasa:unity:uds_local_test:TEST1:CHRP_16_DAY_REBIN___1"
 output_data_bucket: "uds-test-cumulus-sps"
 
 # For DAAC CNM step

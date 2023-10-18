@@ -70,9 +70,11 @@ steps:
     - errors
 
   workflow:
-    # FIXME: devel --> main
     # run: https://raw.githubusercontent.com/unity-sds/unity-sps-workflows/devel/sounder_sips/chirp/chirp-rebinning-e2e-workflow.cwl
-    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
+    # FIXME: use this for MCP-Dev
+    # run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
+    # FIXME: use this for MCP-Test and SPIS Test
+    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.test.cwl
     in:
       input_processing_labels: input_processing_labels
       input_cmr_collection_name: input_cmr_collection_name
