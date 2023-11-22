@@ -1,8 +1,8 @@
-input_collection_id: SNDR_SNPP_ATMS_L1A___1
+# input_collection_id: SNDR_SNPP_ATMS_L1A___1
+input_collection_id: urn:nasa:unity:uds_local_test:TEST1:SNDR_SNPP_ATMS_L1A___1
 start_datetime: 2016-01-14T08:00:00Z
 stop_datetime: 2016-01-14T11:59:59Z
-output_collection_id: SNDR_SNPP_ATMS_L1B_OUTPUT___1
-
+output_collection_id: urn:nasa:unity:uds_local_test:TEST1:SNDR_SNPP_ATMS_L1B_OUTPUT___1
 staging_bucket: uds-test-cumulus-staging
 client_id: 6ir9qveln397i0inh9pmsabq1
 dapa_api: https://58nbcawrvb.execute-api.us-west-2.amazonaws.com/test
