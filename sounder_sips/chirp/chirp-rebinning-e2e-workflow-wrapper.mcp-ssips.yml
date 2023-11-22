@@ -1,0 +1,22 @@
+job_id: abc123
+input_processing_labels: ["label1","label2"]
+
+# For CMR Search Step
+input_cmr_collection_name: "C2011289787-GES_DISC"
+input_cmr_search_start_time: "2016-08-22T00:10:00Z"
+input_cmr_search_stop_time: "2016-08-22T00:11:00Z"
+# input_cmr_search_stop_time: "2016-09-06T23:59:59Z"
+limits: "-1"
+
+#for chirp rebinning step
+# none -
+
+# For unity data upload step, unity catalog
+output_collection_id: "urn:nasa:unity:ssips:TEST1:CHRP_16_DAY_REBIN___1"
+output_data_bucket: "ssips-test-ds-storage-reproc"
+
+# For DAAC CNM step
+input_daac_collection_shortname: "CHIRP_OUTPUT"
+input_daac_collection_sns: "arn:://SNS-arn"
+
+jobs_data_sns_topic_arn: "arn:aws:sns:us-west-2:XXXXXXXXXXXXXX:unity-dev-dev-sps-SNS-JobsDataTopic-573c.fifo"
