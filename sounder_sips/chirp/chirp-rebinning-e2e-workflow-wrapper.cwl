@@ -26,6 +26,10 @@ inputs:
     default: "{}"
   jobs_data_sns_topic_arn:
     type: string
+  client_id:
+    type: string
+  dapa_api:
+    type: string
 
   # Generic inputs
   input_processing_labels: string[]
@@ -74,12 +78,15 @@ steps:
     # FIXME: use this for MCP-Dev
     # run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.cwl
     # FIXME: use this for MCP-Test and SPIS Test
-    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.test.cwl
+    # run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/main/chirp-rebinning-e2e-workflow.test.cwl
+    run: https://raw.githubusercontent.com/unity-sds/sounder-sips-chirp-workflows/use-dapa-parameters/chirp-rebinning-e2e-workflow.cwl
     in:
       input_processing_labels: input_processing_labels
       input_cmr_collection_name: input_cmr_collection_name
       input_cmr_search_start_time: input_cmr_search_start_time
       input_cmr_search_stop_time: input_cmr_search_stop_time
+      input_unity_dapa_api: dapa_api
+      input_unity_client_id: client_id
       # input_cmr_edl_user: input_cmr_edl_user
       # input_cmr_edl_pass: input_cmr_edl_pass
       output_collection_id: output_collection_id
