@@ -20,3 +20,5 @@ input_daac_collection_shortname: "CHIRP_OUTPUT"
 input_daac_collection_sns: "arn:://SNS-arn"
 
 jobs_data_sns_topic_arn: "arn:aws:sns:us-west-2:428002334974:unity-test-sps-SNS-JobsDataTopic-00fa.fifo"
+client_id: XXXXXXXXXXXX
+dapa_api: https://XXXXXXXXXXXX.us-west-2.amazonaws.com/dev/
