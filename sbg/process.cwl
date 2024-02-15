@@ -28,7 +28,8 @@ inputs:
     default: EMIT
     type: string
   temp_directory:
-    default: /unity/ads/temp/nb_l1b_preprocess
+    # default: /unity/ads/temp/nb_l1b_preprocess
+    default: /tmp/nb_l1b_preprocess
     type: string
 outputs:
   process_output_dir:
