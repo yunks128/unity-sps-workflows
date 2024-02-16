@@ -11,7 +11,7 @@ baseCommand:
 - /home/jovyan/process.ipynb
 - --cwd
 - /home/jovyan
-- process_output/output_nb.ipynb
+- /scratch/process_output/output_nb.ipynb
 - -f
 - /tmp/inputs.json
 class: CommandLineTool
@@ -34,11 +34,11 @@ inputs:
 outputs:
   process_output_dir:
     outputBinding:
-      glob: $(runtime.outdir)/process_output
+      glob: /scratch/process_output
     type: Directory
   process_output_nb:
     outputBinding:
-      glob: $(runtime.outdir)/process_output/output_nb.ipynb
+      glob: /scratch/process_output/output_nb.ipynb
     type: File
 requirements:
   DockerRequirement:
