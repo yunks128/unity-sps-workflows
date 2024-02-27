@@ -28,5 +28,4 @@ inputs:
       position: 2
   # Include other inputs as necessary
 
-outputs:
-  # Define outputs
+outputs: []
