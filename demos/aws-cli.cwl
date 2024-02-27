@@ -16,6 +16,8 @@ requirements:
       AWS_WEB_IDENTITY_TOKEN_FILE:
         envName: AWS_WEB_IDENTITY_TOKEN_FILE
         envValue: $(inputs.aws_web_identity_token_file)
+  NetworkAccess:
+      networkAccess: true
 
 inputs:
   aws_role_arn:
