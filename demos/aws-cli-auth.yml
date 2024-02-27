@@ -1,0 +1,4 @@
+token_file:
+  class: File
+  path: /var/run/secrets/eks.amazonaws.com/serviceaccount/token  # Update this path to where your token file is located
+aws_role_arn: "arn:aws:iam::429178552491:role/unity-dev-sps-airflow-2-eks-node-role"  # Update this with your actual role ARN
