@@ -1,11 +1,11 @@
 #!/usr/bin/env cwl-runner
 cwlVersion: v1.2
 class: CommandLineTool
-baseCommand: ["aws", "s3", "ls"]
-
 hints:
   DockerRequirement:
     dockerPull: amazon/aws-cli:latest
+
+baseCommand: ["s3", "ls"]
 
 requirements:
   EnvVarRequirement:
