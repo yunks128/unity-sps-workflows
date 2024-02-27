@@ -23,6 +23,8 @@ requirements:
 inputs:
   token_file:
     type: File
+    inputBinding:
+      position: 1  # Specify the position of the input file
     # Path to the token file on the Kubernetes pod
   aws_role_arn:
     type: string
