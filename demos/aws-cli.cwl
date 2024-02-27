@@ -1,7 +1,7 @@
 #!/usr/bin/env cwl-runner
 cwlVersion: v1.2
 class: CommandLineTool
-baseCommand: ["s3", "ls"]
+baseCommand: ["aws", "s3", "ls"]
 
 hints:
   DockerRequirement:
@@ -20,12 +20,7 @@ requirements:
 inputs:
   aws_role_arn:
     type: string
-    inputBinding:
-      position: 1
   aws_web_identity_token_file:
     type: string
-    inputBinding:
-      position: 2
-  # Include other inputs as necessary
 
 outputs: []
