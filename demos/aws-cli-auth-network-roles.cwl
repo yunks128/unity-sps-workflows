@@ -11,11 +11,6 @@ requirements:
   NetworkAccess:
     networkAccess: true
 
-  InitialWorkDirRequirement:
-    listing:
-      - entryname: web_identity_token  # Fixed name for the token file inside the container
-        entry: $(inputs.token_file)
-
   EnvVarRequirement:
     envDef:
       AWS_ROLE_ARN:
@@ -23,8 +18,8 @@ requirements:
         envValue: $(inputs.aws_role_arn)
       AWS_WEB_IDENTITY_TOKEN_FILE:
         envName: "AWS_WEB_IDENTITY_TOKEN_FILE"
-        # Use a fixed path based on the entryname given above
-        envValue: $(runtime.outdir)/web_identity_token
+        # Correct the reference to match the input field name
+        envValue: $(inputs.token_file.path)
 
 inputs:
   token_file:
