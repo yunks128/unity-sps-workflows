@@ -46,7 +46,7 @@ $graph:
 
     requirements:
       DockerRequirement:
-        dockerPull: ghcr.io/unity-sds/unity-data-services:6.4.3
+        dockerPull: ghcr.io/unity-sds/unity-data-services:5.3.2
       EnvVarRequirement:
         envDef:
           USERNAME: $(inputs.unity_username)
@@ -56,8 +56,6 @@ $graph:
           CLIENT_ID: $(inputs.unity_client_id)
           COGNITO_URL: $(inputs.unity_cognito_url)
           DAPA_API: $(inputs.unity_dapa_api)
-          VERIFY_SSL: 'FALSE'
-
 
           PROVIDER_ID: 'SNPP'
           GRANULES_CATALOG_TYPE: 'UNITY'

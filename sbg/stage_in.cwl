@@ -29,7 +29,7 @@ outputs:
     type: Directory
 requirements:
   DockerRequirement:
-    dockerPull: ghcr.io/unity-sds/unity-data-services:6.4.3
+    dockerPull: ghcr.io/unity-sds/unity-data-services:5.3.1
   EnvVarRequirement:
     envDef:
       DOWNLOADING_KEYS: $(inputs.downloading_keys)
