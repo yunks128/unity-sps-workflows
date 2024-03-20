@@ -1,0 +1,3 @@
+the_file:
+  class: File
+  path: echo_message.txt
