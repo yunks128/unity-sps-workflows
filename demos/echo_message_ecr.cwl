@@ -6,7 +6,7 @@ arguments: [$(inputs.message)]
 
 hints:
   DockerRequirement:
-    dockerPull: 429178552491.dkr.ecr.us-west-2.amazonaws.com/unity-nikki-1-dev-sps-busybox:latest
+    dockerPull: 195353574769.dkr.ecr.us-west-2.amazonaws.com/unity/busybox:latest
 
 inputs:
   message:
